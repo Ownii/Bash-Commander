@@ -1,0 +1,597 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A564229255C472B00607AA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564228255C472B00607AA9 /* AppDelegate.swift */; };
+		0A56422B255C472B00607AA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56422A255C472B00607AA9 /* ContentView.swift */; };
+		0A56422D255C472F00607AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A56422C255C472F00607AA9 /* Assets.xcassets */; };
+		0A564230255C472F00607AA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A56422F255C472F00607AA9 /* Preview Assets.xcassets */; };
+		0A564233255C472F00607AA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A564231255C472F00607AA9 /* Main.storyboard */; };
+		0A56423F255C472F00607AA9 /* Bash_CommanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56423E255C472F00607AA9 /* Bash_CommanderTests.swift */; };
+		0A56424A255C472F00607AA9 /* Bash_CommanderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564249255C472F00607AA9 /* Bash_CommanderUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A56423B255C472F00607AA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A56421D255C472B00607AA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A564224255C472B00607AA9;
+			remoteInfo = "Bash Commander";
+		};
+		0A564246255C472F00607AA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A56421D255C472B00607AA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A564224255C472B00607AA9;
+			remoteInfo = "Bash Commander";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A564225255C472B00607AA9 /* Bash Commander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bash Commander.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A564228255C472B00607AA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A56422A255C472B00607AA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0A56422C255C472F00607AA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A56422F255C472F00607AA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0A564232255C472F00607AA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A564234255C472F00607AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A564235255C472F00607AA9 /* Bash_Commander.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bash_Commander.entitlements; sourceTree = "<group>"; };
+		0A56423A255C472F00607AA9 /* Bash CommanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bash CommanderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A56423E255C472F00607AA9 /* Bash_CommanderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash_CommanderTests.swift; sourceTree = "<group>"; };
+		0A564240255C472F00607AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A564245255C472F00607AA9 /* Bash CommanderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bash CommanderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A564249255C472F00607AA9 /* Bash_CommanderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash_CommanderUITests.swift; sourceTree = "<group>"; };
+		0A56424B255C472F00607AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A564222255C472B00607AA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A564237255C472F00607AA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A564242255C472F00607AA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A56421C255C472B00607AA9 = {
+			isa = PBXGroup;
+			children = (
+				0A564227255C472B00607AA9 /* Bash Commander */,
+				0A56423D255C472F00607AA9 /* Bash CommanderTests */,
+				0A564248255C472F00607AA9 /* Bash CommanderUITests */,
+				0A564226255C472B00607AA9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0A564226255C472B00607AA9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A564225255C472B00607AA9 /* Bash Commander.app */,
+				0A56423A255C472F00607AA9 /* Bash CommanderTests.xctest */,
+				0A564245255C472F00607AA9 /* Bash CommanderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0A564227255C472B00607AA9 /* Bash Commander */ = {
+			isa = PBXGroup;
+			children = (
+				0A564228255C472B00607AA9 /* AppDelegate.swift */,
+				0A56422A255C472B00607AA9 /* ContentView.swift */,
+				0A56422C255C472F00607AA9 /* Assets.xcassets */,
+				0A564231255C472F00607AA9 /* Main.storyboard */,
+				0A564234255C472F00607AA9 /* Info.plist */,
+				0A564235255C472F00607AA9 /* Bash_Commander.entitlements */,
+				0A56422E255C472F00607AA9 /* Preview Content */,
+			);
+			path = "Bash Commander";
+			sourceTree = "<group>";
+		};
+		0A56422E255C472F00607AA9 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0A56422F255C472F00607AA9 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0A56423D255C472F00607AA9 /* Bash CommanderTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A56423E255C472F00607AA9 /* Bash_CommanderTests.swift */,
+				0A564240255C472F00607AA9 /* Info.plist */,
+			);
+			path = "Bash CommanderTests";
+			sourceTree = "<group>";
+		};
+		0A564248255C472F00607AA9 /* Bash CommanderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0A564249255C472F00607AA9 /* Bash_CommanderUITests.swift */,
+				0A56424B255C472F00607AA9 /* Info.plist */,
+			);
+			path = "Bash CommanderUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A564224255C472B00607AA9 /* Bash Commander */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A56424E255C472F00607AA9 /* Build configuration list for PBXNativeTarget "Bash Commander" */;
+			buildPhases = (
+				0A564221255C472B00607AA9 /* Sources */,
+				0A564222255C472B00607AA9 /* Frameworks */,
+				0A564223255C472B00607AA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bash Commander";
+			productName = "Bash Commander";
+			productReference = 0A564225255C472B00607AA9 /* Bash Commander.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0A564239255C472F00607AA9 /* Bash CommanderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A564251255C472F00607AA9 /* Build configuration list for PBXNativeTarget "Bash CommanderTests" */;
+			buildPhases = (
+				0A564236255C472F00607AA9 /* Sources */,
+				0A564237255C472F00607AA9 /* Frameworks */,
+				0A564238255C472F00607AA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A56423C255C472F00607AA9 /* PBXTargetDependency */,
+			);
+			name = "Bash CommanderTests";
+			productName = "Bash CommanderTests";
+			productReference = 0A56423A255C472F00607AA9 /* Bash CommanderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0A564244255C472F00607AA9 /* Bash CommanderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A564254255C472F00607AA9 /* Build configuration list for PBXNativeTarget "Bash CommanderUITests" */;
+			buildPhases = (
+				0A564241255C472F00607AA9 /* Sources */,
+				0A564242255C472F00607AA9 /* Frameworks */,
+				0A564243255C472F00607AA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A564247255C472F00607AA9 /* PBXTargetDependency */,
+			);
+			name = "Bash CommanderUITests";
+			productName = "Bash CommanderUITests";
+			productReference = 0A564245255C472F00607AA9 /* Bash CommanderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A56421D255C472B00607AA9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					0A564224255C472B00607AA9 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					0A564239255C472F00607AA9 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 0A564224255C472B00607AA9;
+					};
+					0A564244255C472F00607AA9 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 0A564224255C472B00607AA9;
+					};
+				};
+			};
+			buildConfigurationList = 0A564220255C472B00607AA9 /* Build configuration list for PBXProject "Bash Commander" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0A56421C255C472B00607AA9;
+			productRefGroup = 0A564226255C472B00607AA9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A564224255C472B00607AA9 /* Bash Commander */,
+				0A564239255C472F00607AA9 /* Bash CommanderTests */,
+				0A564244255C472F00607AA9 /* Bash CommanderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A564223255C472B00607AA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A564233255C472F00607AA9 /* Main.storyboard in Resources */,
+				0A564230255C472F00607AA9 /* Preview Assets.xcassets in Resources */,
+				0A56422D255C472F00607AA9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A564238255C472F00607AA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A564243255C472F00607AA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A564221255C472B00607AA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A56422B255C472B00607AA9 /* ContentView.swift in Sources */,
+				0A564229255C472B00607AA9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A564236255C472F00607AA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A56423F255C472F00607AA9 /* Bash_CommanderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A564241255C472F00607AA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A56424A255C472F00607AA9 /* Bash_CommanderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0A56423C255C472F00607AA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A564224255C472B00607AA9 /* Bash Commander */;
+			targetProxy = 0A56423B255C472F00607AA9 /* PBXContainerItemProxy */;
+		};
+		0A564247255C472F00607AA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A564224255C472B00607AA9 /* Bash Commander */;
+			targetProxy = 0A564246255C472F00607AA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0A564231255C472F00607AA9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A564232255C472F00607AA9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0A56424C255C472F00607AA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0A56424D255C472F00607AA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		0A56424F255C472F00607AA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Bash Commander/Bash_Commander.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Bash Commander/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Bash Commander/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-Commander";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0A564250255C472F00607AA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Bash Commander/Bash_Commander.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Bash Commander/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Bash Commander/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-Commander";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		0A564252255C472F00607AA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Bash CommanderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-CommanderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bash Commander.app/Contents/MacOS/Bash Commander";
+			};
+			name = Debug;
+		};
+		0A564253255C472F00607AA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Bash CommanderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-CommanderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bash Commander.app/Contents/MacOS/Bash Commander";
+			};
+			name = Release;
+		};
+		0A564255255C472F00607AA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Bash CommanderUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-CommanderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Bash Commander";
+			};
+			name = Debug;
+		};
+		0A564256255C472F00607AA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Bash CommanderUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-CommanderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "Bash Commander";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A564220255C472B00607AA9 /* Build configuration list for PBXProject "Bash Commander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A56424C255C472F00607AA9 /* Debug */,
+				0A56424D255C472F00607AA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A56424E255C472F00607AA9 /* Build configuration list for PBXNativeTarget "Bash Commander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A56424F255C472F00607AA9 /* Debug */,
+				0A564250255C472F00607AA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A564251255C472F00607AA9 /* Build configuration list for PBXNativeTarget "Bash CommanderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A564252255C472F00607AA9 /* Debug */,
+				0A564253255C472F00607AA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A564254255C472F00607AA9 /* Build configuration list for PBXNativeTarget "Bash CommanderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A564255255C472F00607AA9 /* Debug */,
+				0A564256255C472F00607AA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A56421D255C472B00607AA9 /* Project object */;
+}
