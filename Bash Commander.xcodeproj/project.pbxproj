@@ -630,6 +630,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Bash Commander/Preview Content\"";
+				DEVELOPMENT_TEAM = LKA83YJF42;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Bash Commander/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -637,7 +638,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-Commander";
+				PRODUCT_BUNDLE_IDENTIFIER = de.mafo.bash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -652,6 +653,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Bash Commander/Preview Content\"";
+				DEVELOPMENT_TEAM = LKA83YJF42;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Bash Commander/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,7 +661,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.brickmakers.Bash-Commander";
+				PRODUCT_BUNDLE_IDENTIFIER = de.mafo.bash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
