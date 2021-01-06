@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import ShellOut
 import RxSwift
 
 struct BashError: Error {
