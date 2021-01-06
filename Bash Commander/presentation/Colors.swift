@@ -18,4 +18,5 @@ extension Color {
     static let success = Color("success")
     static let error = Color("error")
     static let processing = Color("processing")
+    static let defaultText = Color("defaultText")
 }

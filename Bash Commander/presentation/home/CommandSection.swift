@@ -24,7 +24,6 @@ struct CommandSection: View {
             HStack {
                 Text(name)
                     .fontWeight(.medium)
-                    .foregroundColor(Color.white)
                     
                 Spacer()
                 IconButton(name: "arrow_down", size: 24) {

@@ -15,8 +15,8 @@ struct MyTextStyle : TextFieldStyle {
         .padding(.horizontal, 12)
         .padding(.vertical, 6)
         .textFieldStyle(PlainTextFieldStyle())
-        .foregroundColor(Color.white.opacity(0.85))
         .background(Color.card)
+        .foregroundColor(.defaultText)
         .cornerRadius(6)
    }
 }
