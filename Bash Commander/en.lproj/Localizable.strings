@@ -1,0 +1,12 @@
+"group" = "Group";
+"newGroup" = "New group";
+"groupname" = "Group name";
+"name" = "Name";
+"command" = "Command";
+"path" = "Path";
+"remove" = "Delete";
+"save" = "Save";
+"add" = "Add";
+"succeeded" = "Succeeded";
+"error" = "Error";
+"running" = "Running...";

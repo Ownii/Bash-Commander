@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Command" representedClassName=".Command" syncable="YES">
+        <attribute name="command" attributeType="String"/>
+        <attribute name="group" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="path" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Command" positionX="-45" positionY="0" width="128" height="103"/>
+    </elements>
+</model>

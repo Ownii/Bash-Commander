@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "baseline_create_black_18dp.png",
       "idiom" : "universal"
     }
   ],

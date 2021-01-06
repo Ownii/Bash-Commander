@@ -1,0 +1,50 @@
+//
+//  CommandCard.swift
+//  Bash Commander
+//
+//  Created by Martin Förster on 11.11.20.
+//
+
+import SwiftUI
+import Swift_IoC_Container
+
+struct CommandCard: View {
+    
+    @EnvironmentObject var navigator: Navigator
+    
+    let command: Command
+    let executeCommand: ExecuteCommand
+    init(
+        _ command: Command,
+        executeCommand: ExecuteCommand = IoC.shared.resolveOrNil()!
+    ) {
+        self.command = command
+        self.executeCommand = executeCommand
+    }
+    
+    func onExecuteCommand() {
+        _ = executeCommand.invoke(command).subscribe()
+    }
+    
+    func onMorePressed() {
+        navigator.open { window in
+            EditCommandView(window: window, cmd: command)
+        }
+    }
+    
+    var body: some View {
+        Group {
+            HStack {
+                Text(command.name!)
+                    .fontWeight(.medium)
+                Spacer()
+                IconButton(name: "Edit", action: onMorePressed)
+                IconButton(name: "execute", action: onExecuteCommand)
+            }
+            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 8)
+            .background(Color.card)
+        }
+        .cornerRadius(4)
+        .overlay(RoundedRectangle(cornerRadius: 4).fill(Color.transparent))
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Command" representedClassName="Command" syncable="YES" codeGenerationType="class">
+        <attribute name="command" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="path" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="CommandGroup" representedClassName="CommandGroup" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="commands" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Command"/>
+    </entity>
+    <elements>
+        <element name="CommandGroup" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Command" positionX="-54" positionY="-9" width="128" height="88"/>
+    </elements>
+</model>

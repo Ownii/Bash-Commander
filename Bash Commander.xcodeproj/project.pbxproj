@@ -3,10 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2C093025A5C9BA00676695 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A2C093225A5C9BA00676695 /* Localizable.strings */; };
+		0A3790D0255D340B00403E5C /* Swift_IoC_Container in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3790CF255D340B00403E5C /* Swift_IoC_Container */; };
+		0A3790D5255D346200403E5C /* GetCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3790D4255D346200403E5C /* GetCommands.swift */; };
+		0A3790DA255D352B00403E5C /* IoCConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3790D9255D352B00403E5C /* IoCConfigurator.swift */; };
+		0A3790E2255D3EDF00403E5C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3790E1255D3EDF00403E5C /* IconButton.swift */; };
+		0A3790E7255D470500403E5C /* CommandSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3790E6255D470500403E5C /* CommandSection.swift */; };
+		0A48032E255C6231004AE04D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A48032D255C6231004AE04D /* Colors.swift */; };
 		0A564229255C472B00607AA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564228255C472B00607AA9 /* AppDelegate.swift */; };
 		0A56422B255C472B00607AA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56422A255C472B00607AA9 /* ContentView.swift */; };
 		0A56422D255C472F00607AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A56422C255C472F00607AA9 /* Assets.xcassets */; };
@@ -14,6 +21,27 @@
 		0A564233255C472F00607AA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A564231255C472F00607AA9 /* Main.storyboard */; };
 		0A56423F255C472F00607AA9 /* Bash_CommanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56423E255C472F00607AA9 /* Bash_CommanderTests.swift */; };
 		0A56424A255C472F00607AA9 /* Bash_CommanderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564249255C472F00607AA9 /* Bash_CommanderUITests.swift */; };
+		0A564271255C55DE00607AA9 /* BashRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564270255C55DE00607AA9 /* BashRepository.swift */; };
+		0A564279255C568600607AA9 /* ExecuteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564278255C568600607AA9 /* ExecuteCommand.swift */; };
+		0A56428B255C5D7500607AA9 /* CommandCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56428A255C5D7500607AA9 /* CommandCard.swift */; };
+		0A564293255C5DD700607AA9 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564292255C5DD700607AA9 /* Commands.swift */; };
+		0A5A0D57255DA84700A19757 /* AddCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A0D56255DA84700A19757 /* AddCommand.swift */; };
+		0A5A0D66255DAE3C00A19757 /* Commands.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A0D64255DAE3C00A19757 /* Commands.xcdatamodeld */; };
+		0A5A0D6B255DAF2000A19757 /* CommandsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A0D6A255DAF2000A19757 /* CommandsRepository.swift */; };
+		0A920C6625A4B22400B41641 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A920C6525A4B22400B41641 /* RxSwift */; };
+		0A920C6E25A4C12C00B41641 /* CommandOuput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A920C6D25A4C12C00B41641 /* CommandOuput.swift */; };
+		0A920C7425A4D3AE00B41641 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A920C7325A4D3AE00B41641 /* ArrayExtensions.swift */; };
+		0A920C8425A4D6CB00B41641 /* OutputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A920C8325A4D6CB00B41641 /* OutputBar.swift */; };
+		0A920C8C25A4EA4D00B41641 /* DeleteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A920C8B25A4EA4D00B41641 /* DeleteCommand.swift */; };
+		0A920C9125A4EA9E00B41641 /* EditCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A920C9025A4EA9E00B41641 /* EditCommand.swift */; };
+		0A920C9625A4F81700B41641 /* OutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A920C9525A4F81700B41641 /* OutputView.swift */; };
+		0AA7CC96255ED3C8005431DE /* Command+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7CC94255ED3C8005431DE /* Command+CoreDataClass.swift */; };
+		0AA7CC97255ED3C8005431DE /* Command+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7CC95255ED3C8005431DE /* Command+CoreDataProperties.swift */; };
+		0AA7CC9F255EDF1D005431DE /* GetGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7CC9E255EDF1D005431DE /* GetGroups.swift */; };
+		0AC7B607255D54510052DAF9 /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B606255D54510052DAF9 /* AccentButton.swift */; };
+		0AC7B60F255D55850052DAF9 /* EditCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B60E255D55850052DAF9 /* EditCommandView.swift */; };
+		0AC7B614255D55CE0052DAF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B613255D55CE0052DAF9 /* HomeView.swift */; };
+		0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B637255D977D0052DAF9 /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +62,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A2C093125A5C9BA00676695 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0A2C093625A5C9ED00676695 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0A3790D4255D346200403E5C /* GetCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommands.swift; sourceTree = "<group>"; };
+		0A3790D9255D352B00403E5C /* IoCConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoCConfigurator.swift; sourceTree = "<group>"; };
+		0A3790E1255D3EDF00403E5C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		0A3790E6255D470500403E5C /* CommandSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSection.swift; sourceTree = "<group>"; };
+		0A48032D255C6231004AE04D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0A564225255C472B00607AA9 /* Bash Commander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bash Commander.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A564228255C472B00607AA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A56422A255C472B00607AA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +83,26 @@
 		0A564245255C472F00607AA9 /* Bash CommanderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bash CommanderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A564249255C472F00607AA9 /* Bash_CommanderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bash_CommanderUITests.swift; sourceTree = "<group>"; };
 		0A56424B255C472F00607AA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A564270255C55DE00607AA9 /* BashRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashRepository.swift; sourceTree = "<group>"; };
+		0A564278255C568600607AA9 /* ExecuteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteCommand.swift; sourceTree = "<group>"; };
+		0A56428A255C5D7500607AA9 /* CommandCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCard.swift; sourceTree = "<group>"; };
+		0A564292255C5DD700607AA9 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
+		0A5A0D56255DA84700A19757 /* AddCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommand.swift; sourceTree = "<group>"; };
+		0A5A0D65255DAE3C00A19757 /* Commands.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Commands.xcdatamodel; sourceTree = "<group>"; };
+		0A5A0D6A255DAF2000A19757 /* CommandsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsRepository.swift; sourceTree = "<group>"; };
+		0A920C6D25A4C12C00B41641 /* CommandOuput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOuput.swift; sourceTree = "<group>"; };
+		0A920C7325A4D3AE00B41641 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		0A920C8325A4D6CB00B41641 /* OutputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputBar.swift; sourceTree = "<group>"; };
+		0A920C8B25A4EA4D00B41641 /* DeleteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCommand.swift; sourceTree = "<group>"; };
+		0A920C9025A4EA9E00B41641 /* EditCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommand.swift; sourceTree = "<group>"; };
+		0A920C9525A4F81700B41641 /* OutputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputView.swift; sourceTree = "<group>"; };
+		0AA7CC94255ED3C8005431DE /* Command+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0AA7CC95255ED3C8005431DE /* Command+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0AA7CC9E255EDF1D005431DE /* GetGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroups.swift; sourceTree = "<group>"; };
+		0AC7B606255D54510052DAF9 /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
+		0AC7B60E255D55850052DAF9 /* EditCommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommandView.swift; sourceTree = "<group>"; };
+		0AC7B613255D55CE0052DAF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0AC7B637255D977D0052DAF9 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A920C6625A4B22400B41641 /* RxSwift in Frameworks */,
+				0A3790D0255D340B00403E5C /* Swift_IoC_Container in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,13 +155,20 @@
 		0A564227255C472B00607AA9 /* Bash Commander */ = {
 			isa = PBXGroup;
 			children = (
+				0A920C7225A4D3A100B41641 /* utils */,
+				0A56426E255C55CE00607AA9 /* data */,
+				0A56426F255C55D400607AA9 /* domain */,
+				0A56425F255C552300607AA9 /* models */,
+				0A564260255C552C00607AA9 /* presentation */,
 				0A564228255C472B00607AA9 /* AppDelegate.swift */,
-				0A56422A255C472B00607AA9 /* ContentView.swift */,
 				0A56422C255C472F00607AA9 /* Assets.xcassets */,
 				0A564231255C472F00607AA9 /* Main.storyboard */,
 				0A564234255C472F00607AA9 /* Info.plist */,
 				0A564235255C472F00607AA9 /* Bash_Commander.entitlements */,
 				0A56422E255C472F00607AA9 /* Preview Content */,
+				0A3790D9255D352B00403E5C /* IoCConfigurator.swift */,
+				0A5A0D64255DAE3C00A19757 /* Commands.xcdatamodeld */,
+				0A2C093225A5C9BA00676695 /* Localizable.strings */,
 			);
 			path = "Bash Commander";
 			sourceTree = "<group>";
@@ -135,6 +199,89 @@
 			path = "Bash CommanderUITests";
 			sourceTree = "<group>";
 		};
+		0A56425F255C552300607AA9 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				0AA7CC94255ED3C8005431DE /* Command+CoreDataClass.swift */,
+				0AA7CC95255ED3C8005431DE /* Command+CoreDataProperties.swift */,
+				0A920C6D25A4C12C00B41641 /* CommandOuput.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		0A564260255C552C00607AA9 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0AC7B63E255DA2110052DAF9 /* new */,
+				0AC7B63D255DA1EE0052DAF9 /* common */,
+				0AC7B63C255DA1E80052DAF9 /* home */,
+				0A56422A255C472B00607AA9 /* ContentView.swift */,
+				0A48032D255C6231004AE04D /* Colors.swift */,
+				0AC7B637255D977D0052DAF9 /* Navigator.swift */,
+				0A920C9525A4F81700B41641 /* OutputView.swift */,
+			);
+			path = presentation;
+			sourceTree = "<group>";
+		};
+		0A56426E255C55CE00607AA9 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				0A564270255C55DE00607AA9 /* BashRepository.swift */,
+				0A5A0D6A255DAF2000A19757 /* CommandsRepository.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		0A56426F255C55D400607AA9 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				0A564278255C568600607AA9 /* ExecuteCommand.swift */,
+				0A3790D4255D346200403E5C /* GetCommands.swift */,
+				0A5A0D56255DA84700A19757 /* AddCommand.swift */,
+				0AA7CC9E255EDF1D005431DE /* GetGroups.swift */,
+				0A920C8B25A4EA4D00B41641 /* DeleteCommand.swift */,
+				0A920C9025A4EA9E00B41641 /* EditCommand.swift */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		0A920C7225A4D3A100B41641 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				0A920C7325A4D3AE00B41641 /* ArrayExtensions.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		0AC7B63C255DA1E80052DAF9 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				0A3790E6255D470500403E5C /* CommandSection.swift */,
+				0AC7B613255D55CE0052DAF9 /* HomeView.swift */,
+				0A56428A255C5D7500607AA9 /* CommandCard.swift */,
+				0A564292255C5DD700607AA9 /* Commands.swift */,
+				0A920C8325A4D6CB00B41641 /* OutputBar.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		0AC7B63D255DA1EE0052DAF9 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				0AC7B606255D54510052DAF9 /* AccentButton.swift */,
+				0A3790E1255D3EDF00403E5C /* IconButton.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		0AC7B63E255DA2110052DAF9 /* new */ = {
+			isa = PBXGroup;
+			children = (
+				0AC7B60E255D55850052DAF9 /* EditCommandView.swift */,
+			);
+			path = new;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,6 +298,10 @@
 			dependencies = (
 			);
 			name = "Bash Commander";
+			packageProductDependencies = (
+				0A3790CF255D340B00403E5C /* Swift_IoC_Container */,
+				0A920C6525A4B22400B41641 /* RxSwift */,
+			);
 			productName = "Bash Commander";
 			productReference = 0A564225255C472B00607AA9 /* Bash Commander.app */;
 			productType = "com.apple.product-type.application";
@@ -220,8 +371,13 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 0A56421C255C472B00607AA9;
+			packageReferences = (
+				0A3790CE255D340B00403E5C /* XCRemoteSwiftPackageReference "swift-ioc-container" */,
+				0A920C6425A4B22400B41641 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 0A564226255C472B00607AA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -239,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A564233255C472F00607AA9 /* Main.storyboard in Resources */,
+				0A2C093025A5C9BA00676695 /* Localizable.strings in Resources */,
 				0A564230255C472F00607AA9 /* Preview Assets.xcassets in Resources */,
 				0A56422D255C472F00607AA9 /* Assets.xcassets in Resources */,
 			);
@@ -265,8 +422,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC7B607255D54510052DAF9 /* AccentButton.swift in Sources */,
+				0A920C9125A4EA9E00B41641 /* EditCommand.swift in Sources */,
+				0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */,
+				0AA7CC9F255EDF1D005431DE /* GetGroups.swift in Sources */,
+				0A56428B255C5D7500607AA9 /* CommandCard.swift in Sources */,
+				0A920C7425A4D3AE00B41641 /* ArrayExtensions.swift in Sources */,
+				0A5A0D57255DA84700A19757 /* AddCommand.swift in Sources */,
+				0A3790E7255D470500403E5C /* CommandSection.swift in Sources */,
+				0A5A0D6B255DAF2000A19757 /* CommandsRepository.swift in Sources */,
+				0A920C8425A4D6CB00B41641 /* OutputBar.swift in Sources */,
+				0A48032E255C6231004AE04D /* Colors.swift in Sources */,
+				0A564293255C5DD700607AA9 /* Commands.swift in Sources */,
 				0A56422B255C472B00607AA9 /* ContentView.swift in Sources */,
+				0A564271255C55DE00607AA9 /* BashRepository.swift in Sources */,
+				0A564279255C568600607AA9 /* ExecuteCommand.swift in Sources */,
+				0A5A0D66255DAE3C00A19757 /* Commands.xcdatamodeld in Sources */,
+				0A3790E2255D3EDF00403E5C /* IconButton.swift in Sources */,
+				0A920C9625A4F81700B41641 /* OutputView.swift in Sources */,
+				0A920C8C25A4EA4D00B41641 /* DeleteCommand.swift in Sources */,
 				0A564229255C472B00607AA9 /* AppDelegate.swift in Sources */,
+				0AA7CC97255ED3C8005431DE /* Command+CoreDataProperties.swift in Sources */,
+				0A3790D5255D346200403E5C /* GetCommands.swift in Sources */,
+				0A3790DA255D352B00403E5C /* IoCConfigurator.swift in Sources */,
+				0AC7B614255D55CE0052DAF9 /* HomeView.swift in Sources */,
+				0AC7B60F255D55850052DAF9 /* EditCommandView.swift in Sources */,
+				0AA7CC96255ED3C8005431DE /* Command+CoreDataClass.swift in Sources */,
+				0A920C6E25A4C12C00B41641 /* CommandOuput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +484,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0A2C093225A5C9BA00676695 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A2C093125A5C9BA00676695 /* en */,
+				0A2C093625A5C9ED00676695 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		0A564231255C472F00607AA9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -317,6 +508,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -378,6 +570,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -592,6 +785,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A3790CE255D340B00403E5C /* XCRemoteSwiftPackageReference "swift-ioc-container" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BrickmakersGmbH/swift-ioc-container.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.1;
+			};
+		};
+		0A920C6425A4B22400B41641 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A3790CF255D340B00403E5C /* Swift_IoC_Container */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A3790CE255D340B00403E5C /* XCRemoteSwiftPackageReference "swift-ioc-container" */;
+			productName = Swift_IoC_Container;
+		};
+		0A920C6525A4B22400B41641 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A920C6425A4B22400B41641 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0A5A0D64255DAE3C00A19757 /* Commands.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0A5A0D65255DAE3C00A19757 /* Commands.xcdatamodel */,
+			);
+			currentVersion = 0A5A0D65255DAE3C00A19757 /* Commands.xcdatamodel */;
+			path = Commands.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0A56421D255C472B00607AA9 /* Project object */;
 }
