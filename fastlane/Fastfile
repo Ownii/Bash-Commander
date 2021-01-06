@@ -1,0 +1,9 @@
+lane :build do
+  build_mac_app(
+    scheme: "Bash Commander",
+    output_directory: "./build",
+    build_path: "./build",
+    export_method: "developer-id",
+    clean: true
+  )
+end
