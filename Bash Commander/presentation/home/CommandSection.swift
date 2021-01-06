@@ -27,7 +27,7 @@ struct CommandSection: View {
                     .foregroundColor(Color.white)
                     
                 Spacer()
-                IconButton(name: "arrow_down") {
+                IconButton(name: "arrow_down", size: 24) {
                     withAnimation {
                         isExpanded.toggle()
                     }

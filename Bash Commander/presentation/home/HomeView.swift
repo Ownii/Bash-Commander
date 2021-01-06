@@ -25,8 +25,22 @@ struct HomeView: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollView(.vertical, showsIndicators: false) {
-                Commands()
-                    .padding(.all, 8)
+                VStack(spacing: 0) {
+                    HStack {
+                        Spacer()
+                        IconButton(name: "github") {
+                            let url = URL(string: "https://github.com/Ownii/Bash-Commander/releases")!
+                            NSWorkspace.shared.open(url)
+                        }
+                        IconButton(name: "exit") {
+                            NSApplication.shared.terminate(self)
+                        }
+                    }.padding(.horizontal, 16)
+                    .padding(.top, 8)
+                    Commands()
+                        .padding(.horizontal, 8)
+                        .padding(.bottom, 8)
+                }
             }
             Group {
                 AccentButton(text: "add") {
