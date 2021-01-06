@@ -27,7 +27,9 @@ struct Commands: View {
             }
         }.onAppear {
             getCommands.invoke().subscribe { commands in
-                groups = commands
+                withAnimation {
+                    groups = commands
+                }
             }.disposed(by: disposeBag)
         }
     }

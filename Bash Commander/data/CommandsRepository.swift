@@ -58,6 +58,7 @@ class CommandsRepositoryImpl:  CommandsRepository {
     
     func deleteCommand(cmd: Command) {
         container.viewContext.delete(cmd)
+        try! container.viewContext.save()
         onCommandsChanged()
     }
     

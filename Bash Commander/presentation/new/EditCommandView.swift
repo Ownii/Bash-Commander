@@ -82,7 +82,10 @@ struct EditCommandView: View {
         getGroups.invoke().subscribe { groups in
             self.groups = groups.element ?? []
             if let groupName = self.cmd?.group {
-                self.group = self.groups.firstIndex(of: groupName)!
+                if let index = self.groups.firstIndex(of: groupName) {
+                    self.group = index+1
+                }
+                
             }
         }.disposed(by: disposeBag)
     }

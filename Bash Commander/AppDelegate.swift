@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // create popover
         let popover = NSPopover()
         popover.contentSize = NSSize(width: 300, height: 500)
-        popover.behavior = .transient
+        popover.behavior = .applicationDefined
         popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(Navigator()))
         
         self.popover = popover
@@ -53,8 +53,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             else {
                 self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 self.popover.contentViewController?.view.window?.becomeKey()
+                NSApp.activate(ignoringOtherApps: true)
             }
         }
+    }
+    
+    func applicationWillResignActive(_ notification: Notification) {
+        popover.performClose(nil)
     }
 
 }
