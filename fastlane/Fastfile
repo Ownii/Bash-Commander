@@ -1,10 +1,16 @@
-lane :build do
-  cert
+lane :app do
+  get_certificates
   build_mac_app(
     scheme: "Bash Commander",
+    configuration: "Release",
     output_directory: "./build",
     build_path: "./build",
     export_method: "developer-id",
+    skip_package_pkg: true,
     clean: true
   )
+end
+
+lane :notar do
+  
 end
