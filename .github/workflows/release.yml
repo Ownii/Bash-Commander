@@ -16,6 +16,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build app
       env:
-        FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
-        FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+        FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
       run: fastlane app
