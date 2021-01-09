@@ -28,10 +28,7 @@ struct HomeView: View {
                 VStack(spacing: 0) {
                     HStack {
                         Spacer()
-                        IconButton(name: "github") {
-                            let url = URL(string: "https://github.com/Ownii/Bash-Commander/releases")!
-                            NSWorkspace.shared.open(url)
-                        }
+                        GitHubButton()
                         IconButton(name: "exit") {
                             NSApplication.shared.terminate(self)
                         }

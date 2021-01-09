@@ -22,6 +22,7 @@ class IoCConfigurator {
             }
             return container
         }
+        IoC.shared.registerLazySingleton(GitHubRepository.self) { GitHubRepositoryImpl() }
         
         IoC.shared.registerLazySingleton(ExecuteCommand.self) { ExecuteCommandImpl() }
         IoC.shared.registerLazySingleton(GetCommands.self) { GetCommandsImpl() }
@@ -29,6 +30,11 @@ class IoCConfigurator {
         IoC.shared.registerLazySingleton(GetGroups.self) { GetGroupsImpl() }
         IoC.shared.registerLazySingleton(DeleteCommand.self) { DeleteCommandImpl() }
         IoC.shared.registerLazySingleton(EditCommand.self) { EditCommandImpl() }
+        
+        IoC.shared.registerLazySingleton(GetNewestRelease.self) { GetNewestReleaseImpl() }
+        IoC.shared.registerLazySingleton(GetReleaseUrl.self) { GetReleaseUrlImpl() }
+        IoC.shared.registerLazySingleton(IsNewVersionAvailable.self) { IsNewVersionAvailableImpl() }
+        IoC.shared.registerLazySingleton(AppConfig.self) { AppConfigImpl() }
        
     }
 }
