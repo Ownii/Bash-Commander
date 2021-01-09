@@ -62,7 +62,7 @@ class BashRepositoryImpl : BashRepository {
 
             task.standardOutput = pipe
             task.standardError = pipe
-            task.arguments = ["/bin/zsh", "-c", cmd]
+            task.arguments = ["bash", "-c", "-i", "-l", cmd]
             if( workingDirectory != nil ) {
                 task.currentDirectoryPath = workingDirectory!
             }
