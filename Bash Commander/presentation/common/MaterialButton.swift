@@ -12,11 +12,13 @@ struct MaterialButton: View {
     let text: LocalizedStringKey
     let action: () -> Void
     let color: Color
+    let enabled: Bool
     
-    init(text: LocalizedStringKey, color: Color = .accent1, action: @escaping () -> Void) {
+    init(text: LocalizedStringKey, color: Color = .accent1, enabled: Bool = true, action: @escaping () -> Void) {
         self.text = text
         self.color = color
         self.action = action
+        self.enabled = enabled
     }
     
     var body: some View {
@@ -29,6 +31,10 @@ struct MaterialButton: View {
         .background(color)
         .cornerRadius(6)
         .overlay(RoundedRectangle(cornerRadius: 4).fill(Color.transparent))
-        .onTapGesture(perform: action)
+        .onTapGesture {
+            if( enabled ) {
+                action()
+            }
+        }.opacity(enabled ? 1 : 0.5)
     }
 }

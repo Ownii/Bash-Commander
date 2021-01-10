@@ -93,12 +93,12 @@ struct EditCommandView: View {
     var body: some View {
         VStack {
             VStack(spacing: 16) {
-                TextField("name", text: $name)
+                TextField("name", text: $name.animation())
                     .textFieldStyle(MyTextStyle())
-                TextField("command", text: $command)
+                TextField("command", text: $command.animation())
                     .textFieldStyle(MyTextStyle())
                 HStack {
-                    TextField("path", text: $path).disabled(true)
+                    TextField("path", text: $path.animation()).disabled(true)
                         .textFieldStyle(MyTextStyle())
                     IconButton(name: "more") {
                         let panel = NSOpenPanel()
@@ -117,7 +117,7 @@ struct EditCommandView: View {
                     }
                 }
                 if( group == 0 ) {
-                    TextField("groupname", text: $groupName)
+                    TextField("groupname", text: $groupName.animation())
                         .textFieldStyle(MyTextStyle())
                 }
             }
@@ -129,14 +129,14 @@ struct EditCommandView: View {
                         deleteCommand.invoke(command: cmd!)
                         window.close()
                     }
-                    MaterialButton(text: "save") {
+                    MaterialButton(text: "save", enabled: isValid()) {
                         editCommand.invoke(cmd!, name: name, path: path, command: command, group: getGroupName())
                         window.close()
                     }
                 }
             }
             else {
-                MaterialButton(text: "add") {
+                MaterialButton(text: "add", enabled: isValid()) {
                     addCommand.invoke(name: name, path: path, command: command, group: getGroupName())
                     window.close()
                 }
@@ -147,5 +147,15 @@ struct EditCommandView: View {
         .onAppear {
            onAppear()
         }
+    }
+    
+    func isValid() -> Bool {
+        return !name.isBlank() && !command.isBlank() && !path.isBlank() && (group > 0 || !groupName.isBlank())
+    }
+}
+
+extension String {
+    func isBlank() -> Bool {
+        trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 }
