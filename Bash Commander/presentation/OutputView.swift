@@ -18,7 +18,7 @@ struct OutputView: View {
     @State var content: String = ""
     
     var body: some View {
-        ScrollView {
+        ReverseScrollView {
             Text(content.trimmingCharacters(in: .whitespacesAndNewlines))
                 .frame(maxWidth: .infinity, alignment: .bottomLeading)
                 .padding(8)
