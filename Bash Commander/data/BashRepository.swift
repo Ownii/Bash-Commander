@@ -71,7 +71,7 @@ class BashRepositoryImpl : BashRepository {
             
             
             if(publish) {
-                self.outputPublisher.onNext(CommandOutput(state: .RUNNING, task: task, output: self.readOutput(pipe: pipe)))
+                self.outputPublisher.onNext(CommandOutput(state: .RUNNING, task: task, output: self.readOutput(pipe: pipe).share(replay: 999)))
             }
             
             
