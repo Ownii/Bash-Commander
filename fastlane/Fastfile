@@ -1,4 +1,14 @@
-lane :app do
+lane :release do
+  version = get_version_number(xcodeproj: "Bash Commander.xcodeproj")
+  if git_tag_exists(tag: version)
+    UI.user_error!("A release with this version already exists")
+  end
+  build()
+  notar()
+  publish()
+end
+
+lane :build do
   get_certificates
   build_mac_app(
     scheme: "Bash Commander",
@@ -12,5 +22,23 @@ lane :app do
 end
 
 lane :notar do
+  notarize(
+    package: "./build/Bash Commander.app",
+    bundle_id: "de.mafo.smite",
+    print_log: true
+  )
+end
+
+lane :publish do
+  version = get_version_number(xcodeproj: "Bash Commander.xcodeproj")
   
+  github_release = set_github_release(
+    repository_name: "Ownii/Bash-Commander",
+    api_token: ENV["GITHUB_TOKEN"],
+    name: "v#{version}",
+    tag_name: version,
+    description: (File.read("Changelog") rescue "No changelog provided"),
+    commitish: "master",
+    upload_assets: ["./build/Bash Commander.app"]
+  )
 end

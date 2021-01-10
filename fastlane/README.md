@@ -15,14 +15,24 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### app
+### release
 ```
-fastlane app
+fastlane release
+```
+
+### build
+```
+fastlane build
 ```
 
 ### notar
 ```
 fastlane notar
+```
+
+### publish
+```
+fastlane publish
 ```
 
 
