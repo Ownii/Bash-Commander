@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 enum CommandState {
     case RUNNING
@@ -17,5 +18,5 @@ enum CommandState {
 struct CommandOutput {
     var state: CommandState
     var task: Process?
-    var output: String?
+    var output: Observable<String>
 }

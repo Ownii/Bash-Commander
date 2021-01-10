@@ -6,19 +6,28 @@
 //
 
 import SwiftUI
+import RxSwift
 
 struct OutputView: View {
     
-    let output: String
+    private let disposeBag = DisposeBag()
+    
+    let output: Observable<String>
     let window: NSWindow
+    
+    @State var content: String = ""
     
     var body: some View {
         ScrollView {
-            Text(output.trimmingCharacters(in: .whitespacesAndNewlines))
+            Text(content.trimmingCharacters(in: .whitespacesAndNewlines))
                 .frame(maxWidth: .infinity, alignment: .bottomLeading)
                 .padding(8)
         }
         .background(Color.black)
-        .frame(maxWidth: .infinity, alignment: .bottomLeading)
+        .frame(maxWidth: .infinity, alignment: .bottomLeading).onAppear {
+            output.subscribe { content in
+                self.content += content
+            }.disposed(by: disposeBag)
+        }
     }
 }

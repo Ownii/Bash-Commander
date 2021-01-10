@@ -48,7 +48,11 @@ struct HomeView: View {
             }
             .padding(.all, 8)
             if( commandOutput != nil ) {
-                OutputBar(output: commandOutput!)
+                OutputBar(output: commandOutput!, hide: {
+                    withAnimation {
+                        self.commandOutput = nil
+                    }
+                })
             }
         }
         .background(Color.background)

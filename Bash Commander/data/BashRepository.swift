@@ -23,19 +23,19 @@ class BashRepositoryImpl : BashRepository {
     
     func execute(cmd: String, workingDirectory: String) -> Completable {
         return self.getEnv().flatMap { env in
-            self.execute(cmd: cmd, workingDirectory: workingDirectory, env: env)
+            self.execute(cmd: cmd, workingDirectory: workingDirectory, env: env, publish: true)
         }.map { output -> Void in
-            self.outputPublisher.onNext(CommandOutput(state: .SUCCEEDED, output: output))
+            self.outputPublisher.onNext(CommandOutput(state: .SUCCEEDED, output: Observable.just(output)))
             return ()
         }.asCompletable()
         .do(onError: { (err: Error) in
-            if let bashError = err as? BashError {
-                
-                self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: "\(bashError.output)"))
-            }
-            else {
-                self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: "\(err.localizedDescription)"))
-            }
+            self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: Observable.error(err)))
+//            if let bashError = err as? BashError {
+//                self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: "\(bashError.output)"))
+//            }
+//            else {
+//                self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: "\(err.localizedDescription)"))
+//            }
         })
     }
     
@@ -55,7 +55,7 @@ class BashRepositoryImpl : BashRepository {
         }
     }
     
-    private func execute(cmd: String, workingDirectory: String? = nil, env: [String: String]? = [:]) -> Single<String> {
+    private func execute(cmd: String, workingDirectory: String? = nil, env: [String: String]? = [:], publish: Bool = false) -> Single<String> {
         return Single<String>.create { single in
             let task = Process()
             let pipe = Pipe()
@@ -68,19 +68,26 @@ class BashRepositoryImpl : BashRepository {
             }
             task.environment = env
             task.launchPath = "/usr/bin/env"
-            try! task.run()
-            self.outputPublisher.onNext(CommandOutput(state: .RUNNING, task: task))
+            
+            
+            if(publish) {
+                self.outputPublisher.onNext(CommandOutput(state: .RUNNING, task: task, output: self.readOutput(pipe: pipe)))
+            }
+            
+            
             task.terminationHandler = { process in
                 let data = pipe.fileHandleForReading.readDataToEndOfFile()
                 if( process.terminationStatus > 0 ) {
                     single(.failure(BashError(output: String(data: data, encoding: .utf8)!)))
-                    
                 }
                 else {
                     let result = String(data: data, encoding: .utf8)!
                     single(.success(result))
                 }
             }
+            
+            try! task.run()
+            
             return Disposables.create {
                 if( task.isRunning ) {
                     task.interrupt()
@@ -88,6 +95,36 @@ class BashRepositoryImpl : BashRepository {
             }
         }
         
+    }
+    
+    private func readOutput(pipe: Pipe) -> Observable<String> {
+        return Observable.create { observable in
+            let reader = pipe.fileHandleForReading
+            reader.waitForDataInBackgroundAndNotify()
+            
+            var progressObserver: NSObjectProtocol!
+            progressObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: reader, queue: nil) { notification -> Void in
+                let data = reader.availableData
+                
+                if data.count > 0 {
+                    if let output = String(data: data, encoding: String.Encoding.utf8) {
+                        observable.onNext(output)
+                    }
+                    reader.waitForDataInBackgroundAndNotify()
+                } else {
+                    observable.onCompleted()
+                    if let observer = progressObserver {
+                        NotificationCenter.default.removeObserver(observer)
+                    }
+                }
+            }
+            
+            return Disposables.create {
+                if let observer = progressObserver {
+                    NotificationCenter.default.removeObserver(observer)
+                }
+            }
+        }
     }
 }
 
