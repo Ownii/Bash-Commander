@@ -37,7 +37,7 @@ lane :publish do
     api_token: ENV["GITHUB_TOKEN"],
     name: "v#{version}",
     tag_name: version,
-    description: (File.read("Changelog") rescue "No changelog provided"),
+    description: (File.read("../Changelog") rescue "No changelog provided"),
     commitish: "master",
     upload_assets: ["./build/Bash Commander.app"]
   )
