@@ -91,7 +91,7 @@ struct EditCommandView: View {
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
+        VStack {
             VStack(spacing: 16) {
                 TextField("name", text: $name)
                     .textFieldStyle(MyTextStyle())
@@ -110,7 +110,7 @@ struct EditCommandView: View {
                         }
                     }
                 }
-                Picker(selection: $group, label: Text("group")) {
+                Picker(selection: $group.animation(), label: Text("group")) {
                     Text("newGroup").tag(0)
                     ForEach(groups, id: \.self) { group in
                         Text(group).tag(groups.firstIndex(of: group)!+1)
@@ -120,28 +120,30 @@ struct EditCommandView: View {
                     TextField("groupname", text: $groupName)
                         .textFieldStyle(MyTextStyle())
                 }
-                if( cmd != nil ) {
-                    HStack {
-                        AccentButton(text: "remove") {
-                            deleteCommand.invoke(command: cmd!)
-                            window.close()
-                        }
-                        AccentButton(text: "save") {
-                            editCommand.invoke(cmd!, name: name, path: path, command: command, group: getGroupName())
-                            window.close()
-                        }
+            }
+            
+            Spacer()
+            if( cmd != nil ) {
+                HStack {
+                    MaterialButton(text: "remove", color: .error) {
+                        deleteCommand.invoke(command: cmd!)
+                        window.close()
                     }
-                }
-                else {
-                    AccentButton(text: "add") {
-                        addCommand.invoke(name: name, path: path, command: command, group: getGroupName())
+                    MaterialButton(text: "save") {
+                        editCommand.invoke(cmd!, name: name, path: path, command: command, group: getGroupName())
                         window.close()
                     }
                 }
-            }.padding(.all, 8)
+            }
+            else {
+                MaterialButton(text: "add") {
+                    addCommand.invoke(name: name, path: path, command: command, group: getGroupName())
+                    window.close()
+                }
+            }
         }
+        .padding(.all, 8)
         .background(Color.background)
-        .frame(maxWidth: .infinity)
         .onAppear {
            onAppear()
         }

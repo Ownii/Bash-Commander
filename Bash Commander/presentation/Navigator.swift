@@ -10,7 +10,7 @@ import SwiftUI
  
 class Navigator: ObservableObject {
     
-    func open<SomeView: View>(width: Int = 300, height: Int = 500, resizable: Bool = false, @ViewBuilder builder: @escaping (NSWindow) -> SomeView) {
+    func open<SomeView: View>(width: Int = 300, height: Int = 300, resizable: Bool = false, @ViewBuilder builder: @escaping (NSWindow) -> SomeView) {
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: width, height: height),
             styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],

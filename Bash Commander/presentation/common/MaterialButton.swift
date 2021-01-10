@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct AccentButton: View {
+struct MaterialButton: View {
     
     let text: LocalizedStringKey
     let action: () -> Void
+    let color: Color
     
-    init(text: LocalizedStringKey, action: @escaping () -> Void) {
+    init(text: LocalizedStringKey, color: Color = .accent1, action: @escaping () -> Void) {
         self.text = text
+        self.color = color
         self.action = action
     }
     
@@ -24,7 +26,7 @@ struct AccentButton: View {
                 .padding(.vertical, 8)
         }
         .frame(maxWidth: .infinity)
-        .background(Color.accent1)
+        .background(color)
         .cornerRadius(6)
         .overlay(RoundedRectangle(cornerRadius: 4).fill(Color.transparent))
         .onTapGesture(perform: action)

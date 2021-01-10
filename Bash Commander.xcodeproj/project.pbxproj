@@ -45,7 +45,7 @@
 		0AA7CC96255ED3C8005431DE /* Command+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7CC94255ED3C8005431DE /* Command+CoreDataClass.swift */; };
 		0AA7CC97255ED3C8005431DE /* Command+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7CC95255ED3C8005431DE /* Command+CoreDataProperties.swift */; };
 		0AA7CC9F255EDF1D005431DE /* GetGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7CC9E255EDF1D005431DE /* GetGroups.swift */; };
-		0AC7B607255D54510052DAF9 /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B606255D54510052DAF9 /* AccentButton.swift */; };
+		0AC7B607255D54510052DAF9 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B606255D54510052DAF9 /* MaterialButton.swift */; };
 		0AC7B60F255D55850052DAF9 /* EditCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B60E255D55850052DAF9 /* EditCommandView.swift */; };
 		0AC7B614255D55CE0052DAF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B613255D55CE0052DAF9 /* HomeView.swift */; };
 		0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B637255D977D0052DAF9 /* Navigator.swift */; };
@@ -113,7 +113,7 @@
 		0AA7CC94255ED3C8005431DE /* Command+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0AA7CC95255ED3C8005431DE /* Command+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0AA7CC9E255EDF1D005431DE /* GetGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGroups.swift; sourceTree = "<group>"; };
-		0AC7B606255D54510052DAF9 /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
+		0AC7B606255D54510052DAF9 /* MaterialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		0AC7B60E255D55850052DAF9 /* EditCommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommandView.swift; sourceTree = "<group>"; };
 		0AC7B613255D55CE0052DAF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0AC7B637255D977D0052DAF9 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 		0AC7B63D255DA1EE0052DAF9 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				0AC7B606255D54510052DAF9 /* AccentButton.swift */,
+				0AC7B606255D54510052DAF9 /* MaterialButton.swift */,
 				0A3790E1255D3EDF00403E5C /* IconButton.swift */,
 			);
 			path = common;
@@ -446,7 +446,7 @@
 				0A7FBB6625A9F0D500193F3B /* IsNewVersionAvailable.swift in Sources */,
 				0A7FBB6125A9F09A00193F3B /* GitHubButton.swift in Sources */,
 				0A7FBB7F25A9FB4400193F3B /* GetNewestRelease.swift in Sources */,
-				0AC7B607255D54510052DAF9 /* AccentButton.swift in Sources */,
+				0AC7B607255D54510052DAF9 /* MaterialButton.swift in Sources */,
 				0A920C9125A4EA9E00B41641 /* EditCommand.swift in Sources */,
 				0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */,
 				0AA7CC9F255EDF1D005431DE /* GetGroups.swift in Sources */,
@@ -655,10 +655,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Bash Commander/Bash_Commander.entitlements";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Bash Commander/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = LKA83YJF42;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Bash Commander/Info.plist";
@@ -667,7 +668,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.mafo.bash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -682,8 +683,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Bash Commander/Bash_Commander.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Bash Commander/Preview Content\"";
 				DEVELOPMENT_TEAM = LKA83YJF42;
@@ -695,7 +696,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.mafo.bash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

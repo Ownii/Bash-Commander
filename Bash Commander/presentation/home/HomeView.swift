@@ -40,7 +40,7 @@ struct HomeView: View {
                 }
             }
             Group {
-                AccentButton(text: "add") {
+                MaterialButton(text: "add") {
                     navigator.open { window in
                         EditCommandView(window: window, cmd: nil)
                     }
