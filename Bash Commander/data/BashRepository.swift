@@ -30,12 +30,6 @@ class BashRepositoryImpl : BashRepository {
         }.asCompletable()
         .do(onError: { (err: Error) in
             self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: Observable.error(err)))
-//            if let bashError = err as? BashError {
-//                self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: "\(bashError.output)"))
-//            }
-//            else {
-//                self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: "\(err.localizedDescription)"))
-//            }
         })
     }
     

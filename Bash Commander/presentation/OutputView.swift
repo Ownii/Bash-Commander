@@ -25,9 +25,16 @@ struct OutputView: View {
         }
         .background(Color.black)
         .frame(maxWidth: .infinity, alignment: .bottomLeading).onAppear {
-            output.subscribe { content in
+            output.subscribe(onNext: { content in
                 self.content += content
-            }.disposed(by: disposeBag)
+            }, onError: { error in
+                if let bashError = error as? BashError {
+                    self.content = bashError.output
+                }
+                else {
+                    self.content = "Unexpectected error: \(error.localizedDescription)"
+                }
+            }).disposed(by: disposeBag)
         }
     }
 }
