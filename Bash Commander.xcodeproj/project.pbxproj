@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A278FCA25B6D947007D9F51 /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A278FC925B6D947007D9F51 /* NotificationRepository.swift */; };
+		0A278FCF25B6DFBE007D9F51 /* NotifySuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A278FCE25B6DFBE007D9F51 /* NotifySuccess.swift */; };
 		0A2C093025A5C9BA00676695 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A2C093225A5C9BA00676695 /* Localizable.strings */; };
 		0A3790D0255D340B00403E5C /* Swift_IoC_Container in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3790CF255D340B00403E5C /* Swift_IoC_Container */; };
 		0A3790D5255D346200403E5C /* GetCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3790D4255D346200403E5C /* GetCommands.swift */; };
@@ -70,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A278FC925B6D947007D9F51 /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
+		0A278FCE25B6DFBE007D9F51 /* NotifySuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifySuccess.swift; sourceTree = "<group>"; };
 		0A2C093125A5C9BA00676695 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A2C093625A5C9ED00676695 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A3790D4255D346200403E5C /* GetCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCommands.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 				0A564270255C55DE00607AA9 /* BashRepository.swift */,
 				0A5A0D6A255DAF2000A19757 /* CommandsRepository.swift */,
 				0A7FBB6F25A9F41B00193F3B /* GitHubRepository.swift */,
+				0A278FC925B6D947007D9F51 /* NotificationRepository.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				0A7FBB6525A9F0D500193F3B /* IsNewVersionAvailable.swift */,
 				0A7FBB6A25A9F12500193F3B /* GetReleaseUrl.swift */,
 				0A7FBB7E25A9FB4400193F3B /* GetNewestRelease.swift */,
+				0A278FCE25B6DFBE007D9F51 /* NotifySuccess.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				0A7FBB6125A9F09A00193F3B /* GitHubButton.swift in Sources */,
 				0A7FBB7F25A9FB4400193F3B /* GetNewestRelease.swift in Sources */,
 				0AC7B607255D54510052DAF9 /* MaterialButton.swift in Sources */,
+				0A278FCF25B6DFBE007D9F51 /* NotifySuccess.swift in Sources */,
 				0A920C9125A4EA9E00B41641 /* EditCommand.swift in Sources */,
 				0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */,
 				0AA7CC9F255EDF1D005431DE /* GetGroups.swift in Sources */,
@@ -468,6 +475,7 @@
 				0A7FBB7525A9F48400193F3B /* GitHubRelease.swift in Sources */,
 				0A564279255C568600607AA9 /* ExecuteCommand.swift in Sources */,
 				0A5A0D66255DAE3C00A19757 /* Commands.xcdatamodeld in Sources */,
+				0A278FCA25B6D947007D9F51 /* NotificationRepository.swift in Sources */,
 				0A3790E2255D3EDF00403E5C /* IconButton.swift in Sources */,
 				0A920C9625A4F81700B41641 /* OutputView.swift in Sources */,
 				0A920C8C25A4EA4D00B41641 /* DeleteCommand.swift in Sources */,

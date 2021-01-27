@@ -14,16 +14,21 @@ struct CommandCard: View {
     
     let command: Command
     let executeCommand: ExecuteCommand
+    let notifySuccess: NotifySuccess
     init(
         _ command: Command,
-        executeCommand: ExecuteCommand = IoC.shared.resolveOrNil()!
+        executeCommand: ExecuteCommand = IoC.shared.resolveOrNil()!,
+        notifySuccess: NotifySuccess = IoC.shared.resolveOrNil()!
     ) {
         self.command = command
         self.executeCommand = executeCommand
+        self.notifySuccess = notifySuccess
     }
     
     func onExecuteCommand() {
-        _ = executeCommand.invoke(command).subscribe()
+        _ = executeCommand.invoke(command).subscribe(onCompleted: {
+            notifySuccess.invoke(command: command)
+        })
     }
     
     func onMorePressed() {

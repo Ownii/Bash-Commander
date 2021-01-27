@@ -7,16 +7,19 @@
 
 import Cocoa
 import SwiftUI
+import UserNotifications
+import RxSwift
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var popover: NSPopover!
     var statusBarItem: NSStatusItem!
+    private let navigator = Navigator()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        IoCConfigurator().configure()
+        IoCConfigurator().configure(notificationDelegate: self)
     
        setupPopover()
     
@@ -31,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let popover = NSPopover()
         popover.contentSize = NSSize(width: 300, height: 500)
         popover.behavior = .applicationDefined
-        popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(Navigator()))
+        popover.contentViewController = NSHostingController(rootView: contentView.environmentObject(navigator))
         
         self.popover = popover
         
@@ -60,6 +63,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillResignActive(_ notification: Notification) {
         popover.performClose(nil)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if( response.actionIdentifier == "output" ) {
+            navigator.open(width: 700, height: 400) { window in
+                OutputView(window: window)
+            }
+        }
+        completionHandler()
     }
 
 }

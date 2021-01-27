@@ -12,6 +12,7 @@ enum CommandState {
     case RUNNING
     case SUCCEEDED
     case FAILED
+    case EMPTY
 }
 
 

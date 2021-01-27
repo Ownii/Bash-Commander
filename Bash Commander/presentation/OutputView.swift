@@ -7,15 +7,25 @@
 
 import SwiftUI
 import RxSwift
+import Swift_IoC_Container
 
 struct OutputView: View {
     
     private let disposeBag = DisposeBag()
     
-    let output: Observable<String>
     let window: NSWindow
     
+    private let bashRepository: BashRepository
+    
     @State var content: String = ""
+    
+    init(
+        window: NSWindow,
+        bashRepository: BashRepository = IoC.shared.resolveOrNil()!
+    ) {
+        self.window = window
+        self.bashRepository = bashRepository
+    }
     
     var body: some View {
         ReverseScrollView {
@@ -25,7 +35,10 @@ struct OutputView: View {
         }
         .background(Color.black)
         .frame(maxWidth: .infinity, alignment: .bottomLeading).onAppear {
-            output.subscribe(onNext: { content in
+            bashRepository.getOutput().flatMap { output -> Observable<String> in
+                return output.output
+                
+            }.subscribe(onNext: { content in
                 self.content += content
             }, onError: { error in
                 if let bashError = error as? BashError {

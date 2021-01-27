@@ -13,15 +13,18 @@ struct BashError: Error {
 }
 
 protocol BashRepository {
-    func execute(cmd: String, workingDirectory: String) -> Completable
-    func getOutput() -> Observable<CommandOutput>
+    func execute(cmd: String, workingDirectory: String)
+    func getCommandOutput() -> Observable<Observable<String>>
 }
 
 class BashRepositoryImpl : BashRepository {
     
-    private lazy var outputPublisher: PublishSubject<CommandOutput> = { PublishSubject<CommandOutput>() }()
+    private lazy var outputPublisher: BehaviorSubject<Observable<String>> = { BehaviorSubject<Observable<String>>(value: Observable.empty()) }()
     
-    func execute(cmd: String, workingDirectory: String) -> Completable {
+    func execute(cmd: String, workingDirectory: String) {
+        
+        
+        
         return self.getEnv().flatMap { env in
             self.execute(cmd: cmd, workingDirectory: workingDirectory, env: env, publish: true)
         }.map { output -> Void in
@@ -64,25 +67,52 @@ class BashRepositoryImpl : BashRepository {
             task.launchPath = "/usr/bin/env"
             
             
+            let output = Observable<String>.create { observable in
+                let reader = pipe.fileHandleForReading
+                
+                reader.readabilityHandler = { reader in
+                    let data = reader.availableData
+
+                    if data.count > 0 {
+                        if let output = String(data: data, encoding: String.Encoding.utf8) {
+                            observable.onNext(output)
+                        }
+                    } else {
+                        observable.onCompleted()
+                    }
+                }
+                
+                return Disposables.create {
+                    reader.readabilityHandler = nil
+                }
+            }
+            
             if(publish) {
-                self.outputPublisher.onNext(CommandOutput(state: .RUNNING, task: task, output: self.readOutput(pipe: pipe).share(replay: 999)))
+                self.outputPublisher.onNext(CommandOutput(state: .RUNNING, task: task, output: output.share(replay: 999)))
             }
             
+            var completeOutput = ""
+            let outputDisposable = output.subscribe(onNext: { output in
+                completeOutput.append(output)
+            }, onCompleted: {
+                single(.success(completeOutput))
+            })
             
-            task.terminationHandler = { process in
-                let data = pipe.fileHandleForReading.readDataToEndOfFile()
-                if( process.terminationStatus > 0 ) {
-                    single(.failure(BashError(output: String(data: data, encoding: .utf8)!)))
-                }
-                else {
-                    let result = String(data: data, encoding: .utf8)!
-                    single(.success(result))
-                }
-            }
+//            task.terminationHandler = { process in
+//                let data = pipe.fileHandleForReading.readDataToEndOfFile()
+//                if( process.terminationStatus > 0 ) {
+//                    single(.failure(BashError(output: String(data: data, encoding: .utf8)!)))
+//                }
+//                else {
+//                    let result = String(data: data, encoding: .utf8)!
+//                    single(.success(result))
+//                }
+//            }
             
             try! task.run()
             
             return Disposables.create {
+                outputDisposable.dispose()
                 if( task.isRunning ) {
                     task.interrupt()
                 }
@@ -94,29 +124,21 @@ class BashRepositoryImpl : BashRepository {
     private func readOutput(pipe: Pipe) -> Observable<String> {
         return Observable.create { observable in
             let reader = pipe.fileHandleForReading
-            reader.waitForDataInBackgroundAndNotify()
             
-            var progressObserver: NSObjectProtocol!
-            progressObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: reader, queue: nil) { notification -> Void in
+            reader.readabilityHandler = { reader in
                 let data = reader.availableData
-                
+
                 if data.count > 0 {
                     if let output = String(data: data, encoding: String.Encoding.utf8) {
                         observable.onNext(output)
                     }
-                    reader.waitForDataInBackgroundAndNotify()
                 } else {
                     observable.onCompleted()
-                    if let observer = progressObserver {
-                        NotificationCenter.default.removeObserver(observer)
-                    }
                 }
             }
             
             return Disposables.create {
-                if let observer = progressObserver {
-                    NotificationCenter.default.removeObserver(observer)
-                }
+                reader.readabilityHandler = nil
             }
         }
     }

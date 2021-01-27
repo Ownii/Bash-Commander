@@ -8,9 +8,10 @@
 import Cocoa
 import Foundation
 import Swift_IoC_Container
+import UserNotifications
 
 class IoCConfigurator {
-    func configure() {
+    func configure(notificationDelegate: UNUserNotificationCenterDelegate) {
         IoC.shared.registerLazySingleton(BashRepository.self) { BashRepositoryImpl() }
         IoC.shared.registerLazySingleton(CommandsRepository.self) { CommandsRepositoryImpl() }
         IoC.shared.registerLazySingleton(NSPersistentContainer.self) {
@@ -23,6 +24,7 @@ class IoCConfigurator {
             return container
         }
         IoC.shared.registerLazySingleton(GitHubRepository.self) { GitHubRepositoryImpl() }
+        IoC.shared.registerLazySingleton(NotificationRepository.self) { NotificationRepositoryImpl(delegate: notificationDelegate) }
         
         IoC.shared.registerLazySingleton(ExecuteCommand.self) { ExecuteCommandImpl() }
         IoC.shared.registerLazySingleton(GetCommands.self) { GetCommandsImpl() }
@@ -30,6 +32,7 @@ class IoCConfigurator {
         IoC.shared.registerLazySingleton(GetGroups.self) { GetGroupsImpl() }
         IoC.shared.registerLazySingleton(DeleteCommand.self) { DeleteCommandImpl() }
         IoC.shared.registerLazySingleton(EditCommand.self) { EditCommandImpl() }
+        IoC.shared.registerLazySingleton(NotifySuccess.self) { NotifySuccessImpl() }
         
         IoC.shared.registerLazySingleton(GetNewestRelease.self) { GetNewestReleaseImpl() }
         IoC.shared.registerLazySingleton(GetReleaseUrl.self) { GetReleaseUrlImpl() }

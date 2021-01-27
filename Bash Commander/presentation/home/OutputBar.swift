@@ -11,7 +11,7 @@ import RxSwift
 struct OutputBar: View {
     @EnvironmentObject var navigator: Navigator
     
-    let output: CommandOutput
+    let output: Observable<String>
     let hide: () -> Void
     
     var body: some View {
@@ -34,7 +34,7 @@ struct OutputBar: View {
     
     private func openOutput() {
         navigator.open(width: 700, height: 400) { window in
-            OutputView(output: output.output, window: window)
+            OutputView(window: window)
         }
     }
     

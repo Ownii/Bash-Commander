@@ -12,9 +12,10 @@ import RxSwift
 struct HomeView: View {
     
     private let disposeBag = DisposeBag()
+    private var closeDelay: Disposable? = nil
     
     @EnvironmentObject var navigator: Navigator
-    @State var commandOutput: CommandOutput? = nil
+    @State var commandOutput: Observable<String>? = nil
     
     private let bashRepository: BashRepository
     
@@ -47,8 +48,8 @@ struct HomeView: View {
                 }
             }
             .padding(.all, 8)
-            if( commandOutput != nil ) {
-                OutputBar(output: commandOutput!, hide: {
+            if let output = commandOutput {
+                OutputBar(output: output, hide: {
                     withAnimation {
                         self.commandOutput = nil
                     }
@@ -58,20 +59,24 @@ struct HomeView: View {
         .background(Color.background)
         .frame(maxWidth: .infinity)
         .onAppear {
-            bashRepository.getOutput()
-                .flatMap { output -> Observable<CommandOutput> in
-                withAnimation {
-                    self.commandOutput = output
-                }
-                return Observable.just(output).delay(.seconds(30), scheduler: MainScheduler.instance)
+            var closeDelay: Disposable? = nil
+            bashRepository.getCommandOutput().flatMap { command -> Observable<String> in
+                return command
             }
-                .subscribe { output in
-                    if( output.element?.state != .RUNNING ) {
-                        withAnimation {
-                            self.commandOutput = nil
-                        }
-                    }
-            }.disposed(by: disposeBag)
+//                .subscribe(onNext: { output in
+//                closeDelay?.dispose()
+//                withAnimation {
+//                    self.commandOutput = output
+//                }
+//                if(output.state == .SUCCEEDED || output.state == .FAILED) {
+//                    closeDelay = Completable.empty().delay(.seconds(30), scheduler: MainScheduler.instance).subscribe(onCompleted:  {
+//                        withAnimation {
+//                            self.commandOutput = nil
+//                        }
+//                    })
+//                }
+//            })
+            .disposed(by: disposeBag)
         }
     }
 }
