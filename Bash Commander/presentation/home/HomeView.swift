@@ -59,13 +59,27 @@ struct HomeView: View {
         .background(Color.background)
         .frame(maxWidth: .infinity)
         .onAppear {
-            getExecutionState.invoke().subscribe(onNext: { state in
-                // TODO: Hide on success/fail after 30 secs
-                withAnimation {
-                    self.showBar = true
+            getExecutionState.invoke()
+                .flatMap { state -> Observable<Bool> in
+                    withAnimation {
+                        showBar = true
+                    }
+                    if( state == ExecutionState.RUNNING ) {
+                        return Observable.just(false)
+                    }
+                    else {
+                        return Observable.just(true)
+                    }
                 }
-            })
-            .disposed(by: disposeBag)
+                .debounce(.seconds(30), scheduler: MainScheduler.instance)
+                .subscribe(onNext: { hide in
+                    if( hide ) {
+                        withAnimation {
+                            self.showBar = false
+                        }
+                    }
+                })
+                .disposed(by: disposeBag)
         }
     }
 }

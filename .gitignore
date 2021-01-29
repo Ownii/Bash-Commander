@@ -8,3 +8,5 @@ build/
 *.p12
 
 fastlane/report.xml
+
+Bash Commander.xcodeproj/xcuserdata/martin.foerster.xcuserdatad/xcdebugger/

@@ -40,6 +40,4 @@ class GetExecutionStateImpl : GetExecutionState {
             }.subscribe()
         }.distinctUntilChanged()
     }
-    
-    
 }
