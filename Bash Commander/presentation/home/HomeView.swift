@@ -17,10 +17,10 @@ struct HomeView: View {
     @EnvironmentObject var navigator: Navigator
     @State var showBar: Bool = false
     
-    private let getCurrentExecution: GetCurrentExecution
+    private let getExecutionState: GetExecutionState
     
-    init(getCurrentExecution: GetCurrentExecution = IoC.shared.resolveOrNil()!) {
-        self.getCurrentExecution = getCurrentExecution
+    init(getExecutionState: GetExecutionState = IoC.shared.resolveOrNil()!) {
+        self.getExecutionState = getExecutionState
     }
     
     var body: some View {
@@ -59,7 +59,7 @@ struct HomeView: View {
         .background(Color.background)
         .frame(maxWidth: .infinity)
         .onAppear {
-            getCurrentExecution.invoke().subscribe(onNext: { execution in
+            getExecutionState.invoke().subscribe(onNext: { state in
                 // TODO: Hide on success/fail after 30 secs
                 withAnimation {
                     self.showBar = true

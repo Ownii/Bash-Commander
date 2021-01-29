@@ -28,11 +28,17 @@ class GetExecutionStateImpl : GetExecutionState {
     }
     
     func invoke() -> Observable<ExecutionState> {
-        return Observable.just(ExecutionState.FAILED)
-//        return getCurrentExecution.invoke()
-//            .flatMap { execution -> Observable<ExecutionState> in
-//                execution.concat()
-//            }
+        return Observable.create { observer in
+            return self.getCurrentExecution.invoke().flatMap { execution -> Observable<String> in
+                observer.onNext(.RUNNING)
+                return execution.do(onError: { _ in
+                    observer.onNext(.FAILED)
+                }, onCompleted: {
+                    observer.onNext(.SUCCEEDED)
+                }).catchAndReturn("")
+                
+            }.subscribe()
+        }.distinctUntilChanged()
     }
     
     

@@ -15,24 +15,25 @@ protocol NotifyOnExecutionTermination {
 
 class NotifyOnExecutionTerminationImpl : NotifyOnExecutionTermination {
     
-    private let getCurrentExecution: GetCurrentExecution
+    private let getExecutionState: GetExecutionState
     private let notificationRepository: NotificationRepository
     
-    init(getCurrentExecution: GetCurrentExecution = IoC.shared.resolveOrNil()!,
+    init(getExecutionState: GetExecutionState = IoC.shared.resolveOrNil()!,
          notificationRepository: NotificationRepository = IoC.shared.resolveOrNil()!) {
-        self.getCurrentExecution = getCurrentExecution
+        self.getExecutionState = getExecutionState
         self.notificationRepository = notificationRepository
     }
     
     func invoke() -> Observable<Never> {
-        return getCurrentExecution.invoke()
-            .flatMap { execution -> Observable<String> in
-                return execution.do(onError: { _ in
+        return getExecutionState.invoke()
+            .map { state -> String in
+                if( state == ExecutionState.SUCCEEDED ) {
+                    self.notificationRepository.show(title: "Erfolgreich", subtitle: "Blubb", action: "Ausgabe")
+                }
+                if( state == ExecutionState.FAILED ) {
                     self.notificationRepository.show(title: "Failed", subtitle: "Blubb", action: "Ausgabe")
-                },
-                onCompleted: {
-                    self.notificationRepository.show(title: "Succeeded", subtitle: "Blubb", action: "Ausgabe")
-                })
+                }
+                return ""
             }.ignoreElements()
     }
     

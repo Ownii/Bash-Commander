@@ -36,6 +36,7 @@ class IoCConfigurator {
         IoC.shared.registerLazySingleton(CancelRunningExecution.self) { CancelRunningExecutionImpl() }
         IoC.shared.registerLazySingleton(GetCurrentExecution.self) { GetCurrentExecutionImpl() }
         IoC.shared.registerLazySingleton(NotifyOnExecutionTermination.self) { NotifyOnExecutionTerminationImpl() }
+        IoC.shared.registerLazySingleton(GetExecutionState.self) { GetExecutionStateImpl() }
         
         IoC.shared.registerLazySingleton(GetNewestRelease.self) { GetNewestReleaseImpl() }
         IoC.shared.registerLazySingleton(GetReleaseUrl.self) { GetReleaseUrlImpl() }

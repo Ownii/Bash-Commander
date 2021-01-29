@@ -18,15 +18,15 @@ struct OutputBar: View {
     let hide: () -> Void
     @State private var state: ExecutionState = .RUNNING
     private let cancelRunningExecution: CancelRunningExecution
-    private let getCurrentExecution: GetCurrentExecution
+    private let getExecutionState: GetExecutionState
     
     init(hide: @escaping () -> Void,
         cancelRunningExecution: CancelRunningExecution = IoC.shared.resolveOrNil()!,
-        getCurrentExecution: GetCurrentExecution = IoC.shared.resolveOrNil()!
+        getExecutionState: GetExecutionState = IoC.shared.resolveOrNil()!
     ) {
         self.hide = hide
         self.cancelRunningExecution = cancelRunningExecution
-        self.getCurrentExecution = getCurrentExecution
+        self.getExecutionState = getExecutionState
     }
     
     var body: some View {
@@ -45,22 +45,12 @@ struct OutputBar: View {
         }
         .background(getColor())
         .frame(maxWidth: .infinity).onAppear {
-            getCurrentExecution.invoke()
-                .flatMap { execution -> Observable<String> in
+            getExecutionState.invoke()
+                .subscribe(onNext: { state in
                     withAnimation {
-                        state = .RUNNING
+                        self.state = state
                     }
-                    return execution.do(onError: { _ in
-                        withAnimation {
-                            state = .FAILED
-                        }
-                    },
-                    onCompleted: {
-                        withAnimation {
-                            state = .SUCCEEDED
-                        }
-                    })
-                }.subscribe().disposed(by: disposeBag)
+                }).disposed(by: disposeBag)
         }
     }
     
