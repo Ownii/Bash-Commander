@@ -33,10 +33,6 @@ class BashRepositoryImpl : BashRepository {
         outputPublisher
     }
     
-    func getExecutions() -> Observable<Observable<String>> {
-        outputPublisher
-    }
-    
     func cancelRunningExecution() {
         if( runningProcess?.isRunning ?? false ) {
             runningProcess?.interrupt()

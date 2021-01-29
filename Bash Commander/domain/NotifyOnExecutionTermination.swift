@@ -28,10 +28,10 @@ class NotifyOnExecutionTerminationImpl : NotifyOnExecutionTermination {
         return getExecutionState.invoke()
             .map { state -> String in
                 if( state == ExecutionState.SUCCEEDED ) {
-                    self.notificationRepository.show(title: "Erfolgreich", subtitle: "Blubb", action: "Ausgabe")
+                    self.notificationRepository.show(title: NSLocalizedString("success", comment: ""), subtitle: NSLocalizedString("success_subtitle", comment: ""), action: NSLocalizedString("output", comment: ""))
                 }
                 if( state == ExecutionState.FAILED ) {
-                    self.notificationRepository.show(title: "Failed", subtitle: "Blubb", action: "Ausgabe")
+                    self.notificationRepository.show(title: NSLocalizedString("fail", comment: ""), subtitle: NSLocalizedString("fail_subtitle", comment: ""), action: NSLocalizedString("output", comment: ""))
                 }
                 return ""
             }.ignoreElements()

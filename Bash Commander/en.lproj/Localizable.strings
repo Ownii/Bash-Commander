@@ -10,3 +10,8 @@
 "succeeded" = "Succeeded";
 "error" = "Error";
 "running" = "Running...";
+"success" = "Succeeded";
+"success_subtitle" = "Command executed successful";
+"fail" = "Failed";
+"fail_subtitle" = "Executed command failed";
+"output" = "Output";

@@ -33,7 +33,7 @@ class GetExecutionStateImpl : GetExecutionState {
                 observer.onNext(.RUNNING)
                 return execution.do(onError: { _ in
                     observer.onNext(.FAILED)
-                }, onCompleted: {
+                }, onCompleted: { 
                     observer.onNext(.SUCCEEDED)
                 }).catchAndReturn("")
                 

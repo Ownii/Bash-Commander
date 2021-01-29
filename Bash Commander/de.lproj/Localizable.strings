@@ -10,3 +10,9 @@
 "succeeded" = "Erfolgreich";
 "error" = "Fehler";
 "running" = "Wird ausgeführt...";
+"success" = "Erfolgreich";
+"success_subtitle" = "Befehl erfolgreich ausgeführt";
+"fail" = "Fehlgeschlagen";
+"fail_subtitle" = "Ausgeführter Befehl fehlgeschlagen";
+"output" = "Ausgabe";
+
