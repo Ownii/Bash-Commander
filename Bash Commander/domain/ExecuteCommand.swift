@@ -10,7 +10,7 @@ import Swift_IoC_Container
 import RxSwift
 
 protocol ExecuteCommand {
-    func invoke(_ command: Command) -> Completable
+    func invoke(_ command: Command)
 }
 
 class ExecuteCommandImpl : ExecuteCommand  {
@@ -21,7 +21,7 @@ class ExecuteCommandImpl : ExecuteCommand  {
         self.bashRepository = bashRepository
     }
     
-    func invoke(_ command: Command) -> Completable {
+    func invoke(_ command: Command) {
        return bashRepository.execute(cmd: command.command!, workingDirectory: command.path!)
     }
     

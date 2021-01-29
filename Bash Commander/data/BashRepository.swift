@@ -8,140 +8,157 @@
 import Foundation
 import RxSwift
 
-struct BashError: Error {
-    var output: String
+enum BashError: Error {
+    case output(String)
+    case envError(String)
+    case workingDirectoryNotExists
+    case exit(Int32)
 }
 
 protocol BashRepository {
     func execute(cmd: String, workingDirectory: String)
-    func getCommandOutput() -> Observable<Observable<String>>
+    func cancelRunningExecution()
+    var executions: Observable<Observable<String>> { get }
 }
 
 class BashRepositoryImpl : BashRepository {
     
-    private lazy var outputPublisher: BehaviorSubject<Observable<String>> = { BehaviorSubject<Observable<String>>(value: Observable.empty()) }()
     
-    func execute(cmd: String, workingDirectory: String) {
-        
-        
-        
-        return self.getEnv().flatMap { env in
-            self.execute(cmd: cmd, workingDirectory: workingDirectory, env: env, publish: true)
-        }.map { output -> Void in
-            self.outputPublisher.onNext(CommandOutput(state: .SUCCEEDED, output: Observable.just(output)))
-            return ()
-        }.asCompletable()
-        .do(onError: { (err: Error) in
-            self.outputPublisher.onNext(CommandOutput(state: .FAILED, output: Observable.error(err)))
-        })
-    }
+
+    private let outputPublisher: BehaviorSubject<Observable<String>> = { BehaviorSubject<Observable<String>>(value: Observable.empty()) }()
     
+    private var runningProcess: Process? = nil
     
-    func getOutput() -> Observable<CommandOutput> {
+    var executions: Observable<Observable<String>> {
         outputPublisher
     }
     
-    private func getEnv() -> Single<[String: String]> {
+    func getExecutions() -> Observable<Observable<String>> {
+        outputPublisher
+    }
+    
+    func cancelRunningExecution() {
+        if( runningProcess?.isRunning ?? false ) {
+            runningProcess?.interrupt()
+        }
+    }
+    
+    func execute(cmd: String, workingDirectory: String) {
+        print("execute \(cmd)")
+        
+        if( runningProcess?.isRunning ?? false) {
+            print("already running")
+            return
+        }
+        
+        let execution = Observable<String>.create { observer in
+            
+            if( !self.directoryExists(directory: workingDirectory) ) {
+                observer.onError(BashError.workingDirectoryNotExists)
+                return Disposables.create()
+            }
+        
+            do {
+                let env = try self.getEnv()
+                self.runningProcess = self.executeAndPublish(command: cmd, workingDirectory: workingDirectory, env: env, observer: observer)
+            } catch let error {
+                self.runningProcess = nil
+                observer.onError(error)
+            }
+            
+            return Disposables.create {
+                self.cancelRunningExecution()
+            }
+        }
+        
+        let sharedExecution = execution.share(replay: 999, scope: .forever)
+        
+        outputPublisher.onNext(sharedExecution)
+    }
+    
+    private func getEnv() throws -> [String: String] {
         var envShell = ProcessInfo.processInfo.environment
         let envPath = envShell["PATH"]! as String
         
-        return execute(cmd: "eval $(/usr/libexec/path_helper -s) ; echo $PATH").map { paths in
-            let pathsOneliner = paths.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)
-            envShell["PATH"] = "\(pathsOneliner):\(envPath)"
-            return envShell
-        }
+        let command = "eval $(/usr/libexec/path_helper -s) ; echo $PATH"
+        let paths = try! simpleExecute(command: command)
+        let pathsOneliner = paths.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)
+        envShell["PATH"] = "\(pathsOneliner):\(envPath)"
+
+        return envShell
     }
     
-    private func execute(cmd: String, workingDirectory: String? = nil, env: [String: String]? = [:], publish: Bool = false) -> Single<String> {
-        return Single<String>.create { single in
-            let task = Process()
-            let pipe = Pipe()
+    private func simpleExecute(command: String) throws -> String {
+        let task = Process()
+        let pipe = Pipe()
 
-            task.standardOutput = pipe
-            task.standardError = pipe
-            task.arguments = ["bash", "-c", "-i", "-l", cmd]
-            if( workingDirectory != nil ) {
-                task.currentDirectoryPath = workingDirectory!
-            }
-            task.environment = env
-            task.launchPath = "/usr/bin/env"
-            
-            
-            let output = Observable<String>.create { observable in
-                let reader = pipe.fileHandleForReading
-                
-                reader.readabilityHandler = { reader in
-                    let data = reader.availableData
+        task.standardOutput = pipe
+        task.standardError = pipe
+        task.arguments = ["bash", "-c", "-i", "-l", command]
+        task.launchPath = "/usr/bin/env"
 
-                    if data.count > 0 {
-                        if let output = String(data: data, encoding: String.Encoding.utf8) {
-                            observable.onNext(output)
-                        }
-                    } else {
-                        observable.onCompleted()
-                    }
-                }
-                
-                return Disposables.create {
-                    reader.readabilityHandler = nil
-                }
-            }
-            
-            if(publish) {
-                self.outputPublisher.onNext(CommandOutput(state: .RUNNING, task: task, output: output.share(replay: 999)))
-            }
-            
-            var completeOutput = ""
-            let outputDisposable = output.subscribe(onNext: { output in
-                completeOutput.append(output)
-            }, onCompleted: {
-                single(.success(completeOutput))
-            })
-            
-//            task.terminationHandler = { process in
-//                let data = pipe.fileHandleForReading.readDataToEndOfFile()
-//                if( process.terminationStatus > 0 ) {
-//                    single(.failure(BashError(output: String(data: data, encoding: .utf8)!)))
-//                }
-//                else {
-//                    let result = String(data: data, encoding: .utf8)!
-//                    single(.success(result))
-//                }
-//            }
-            
-            try! task.run()
-            
-            return Disposables.create {
-                outputDisposable.dispose()
-                if( task.isRunning ) {
-                    task.interrupt()
+        try! task.run()
+        task.waitUntilExit()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        if( task.terminationStatus > 0 ) {
+            let result = String(data: data, encoding: .utf8)!
+            throw BashError.envError(result)
+        }
+        let result = String(data: data, encoding: .utf8)!
+        
+        return result
+    }
+    
+    private func executeAndPublish(command: String, workingDirectory: String, env: [String: String], observer: AnyObserver<String>) -> Process {
+        let task = Process()
+        let pipe = Pipe()
+
+        task.standardOutput = pipe
+        task.standardError = pipe
+        task.arguments = ["bash", "-c", "-i", "-l", command]
+        task.currentDirectoryPath = workingDirectory
+        task.environment = env
+        task.launchPath = "/usr/bin/env"
+        
+        let reader = pipe.fileHandleForReading
+
+        reader.readabilityHandler = { reader in
+            let data = reader.availableData
+
+            if data.count > 0 {
+                print("new data received")
+                if let output = String(data: data, encoding: String.Encoding.utf8) {
+                    print("output: \(output)")
+                    observer.onNext(output)
                 }
             }
         }
         
-    }
-    
-    private func readOutput(pipe: Pipe) -> Observable<String> {
-        return Observable.create { observable in
-            let reader = pipe.fileHandleForReading
-            
-            reader.readabilityHandler = { reader in
-                let data = reader.availableData
-
-                if data.count > 0 {
-                    if let output = String(data: data, encoding: String.Encoding.utf8) {
-                        observable.onNext(output)
-                    }
-                } else {
-                    observable.onCompleted()
-                }
+        task.terminationHandler = { process in
+            if ( process.terminationStatus > 0 ) {
+                print("terminated due to failure")
+                self.runningProcess = nil
+                observer.onError(BashError.exit(process.terminationStatus))
             }
-            
-            return Disposables.create {
-                reader.readabilityHandler = nil
+            else {
+                print("completed")
+                self.runningProcess = nil
+                observer.onCompleted()
             }
         }
+        
+        try! task.run()
+        
+        return task
     }
+    
+    func directoryExists(directory: String) -> Bool {
+        var isDirectory: ObjCBool = false
+        let exists = FileManager.default.fileExists(atPath: directory, isDirectory:&isDirectory)
+        return exists && isDirectory.boolValue
+    }
+    
 }
 
 

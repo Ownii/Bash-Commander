@@ -33,6 +33,9 @@ class IoCConfigurator {
         IoC.shared.registerLazySingleton(DeleteCommand.self) { DeleteCommandImpl() }
         IoC.shared.registerLazySingleton(EditCommand.self) { EditCommandImpl() }
         IoC.shared.registerLazySingleton(NotifySuccess.self) { NotifySuccessImpl() }
+        IoC.shared.registerLazySingleton(CancelRunningExecution.self) { CancelRunningExecutionImpl() }
+        IoC.shared.registerLazySingleton(GetCurrentExecution.self) { GetCurrentExecutionImpl() }
+        IoC.shared.registerLazySingleton(NotifyOnExecutionTermination.self) { NotifyOnExecutionTerminationImpl() }
         
         IoC.shared.registerLazySingleton(GetNewestRelease.self) { GetNewestReleaseImpl() }
         IoC.shared.registerLazySingleton(GetReleaseUrl.self) { GetReleaseUrlImpl() }

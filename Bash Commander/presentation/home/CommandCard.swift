@@ -26,9 +26,7 @@ struct CommandCard: View {
     }
     
     func onExecuteCommand() {
-        _ = executeCommand.invoke(command).subscribe(onCompleted: {
-            notifySuccess.invoke(command: command)
-        })
+        executeCommand.invoke(command)
     }
     
     func onMorePressed() {

@@ -7,12 +7,27 @@
 
 import SwiftUI
 import RxSwift
+import Swift_IoC_Container
+
 
 struct OutputBar: View {
     @EnvironmentObject var navigator: Navigator
     
-    let output: Observable<String>
+    let disposeBag = DisposeBag()
+    
     let hide: () -> Void
+    @State private var state: ExecutionState = .RUNNING
+    private let cancelRunningExecution: CancelRunningExecution
+    private let getCurrentExecution: GetCurrentExecution
+    
+    init(hide: @escaping () -> Void,
+        cancelRunningExecution: CancelRunningExecution = IoC.shared.resolveOrNil()!,
+        getCurrentExecution: GetCurrentExecution = IoC.shared.resolveOrNil()!
+    ) {
+        self.hide = hide
+        self.cancelRunningExecution = cancelRunningExecution
+        self.getCurrentExecution = getCurrentExecution
+    }
     
     var body: some View {
         Group {
@@ -21,7 +36,7 @@ struct OutputBar: View {
                 Spacer()
                 IconButton(name: "output", hoverColor: Color.white.opacity(0.75), action: openOutput)
                 IconButton(name: "close", hoverColor: Color.white.opacity(0.75)) {
-                    output.task?.interrupt()
+                    cancelRunningExecution.invoke()
                     hide()
                 }
                 
@@ -29,7 +44,24 @@ struct OutputBar: View {
             .padding(8)
         }
         .background(getColor())
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity).onAppear {
+            getCurrentExecution.invoke()
+                .flatMap { execution -> Observable<String> in
+                    withAnimation {
+                        state = .RUNNING
+                    }
+                    return execution.do(onError: { _ in
+                        withAnimation {
+                            state = .FAILED
+                        }
+                    },
+                    onCompleted: {
+                        withAnimation {
+                            state = .SUCCEEDED
+                        }
+                    })
+                }.subscribe().disposed(by: disposeBag)
+        }
     }
     
     private func openOutput() {
@@ -39,7 +71,7 @@ struct OutputBar: View {
     }
     
     private func showText() -> Text {
-        switch output.state {
+        switch state {
         case .SUCCEEDED:
             return Text("succeeded")
         case .FAILED:
@@ -50,7 +82,7 @@ struct OutputBar: View {
     }
     
     private func getColor() -> Color {
-        switch output.state {
+        switch state {
         case .SUCCEEDED:
             return .success
         case .FAILED:

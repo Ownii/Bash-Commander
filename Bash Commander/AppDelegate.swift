@@ -9,6 +9,7 @@ import Cocoa
 import SwiftUI
 import UserNotifications
 import RxSwift
+import Swift_IoC_Container
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -16,12 +17,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     var popover: NSPopover!
     var statusBarItem: NSStatusItem!
     private let navigator = Navigator()
+    private let disposeBag = DisposeBag()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         IoCConfigurator().configure(notificationDelegate: self)
     
        setupPopover()
+        
+        let notifyOnExecutionTermination: NotifyOnExecutionTermination = IoC.shared.resolveOrNil()!
+        notifyOnExecutionTermination.invoke().subscribe().disposed(by: disposeBag)
     
     }
     

@@ -35,14 +35,23 @@ struct OutputView: View {
         }
         .background(Color.black)
         .frame(maxWidth: .infinity, alignment: .bottomLeading).onAppear {
-            bashRepository.getOutput().flatMap { output -> Observable<String> in
-                return output.output
+            bashRepository.executions.flatMap { execution -> Observable<String> in
+                return execution
                 
             }.subscribe(onNext: { content in
                 self.content += content
             }, onError: { error in
                 if let bashError = error as? BashError {
-                    self.content = bashError.output
+                    switch(bashError) {
+                    case .workingDirectoryNotExists:
+                        self.content += "Working directory does not exist"
+                    case .output(let output):
+                        self.content += output
+                    case .envError(_):
+                        self.content = "Error setting up enviroment"
+                    case .exit(let exitCode):
+                        self.content = "Terminated with exit code \(exitCode)"
+                    }
                 }
                 else {
                     self.content = "Unexpectected error: \(error.localizedDescription)"

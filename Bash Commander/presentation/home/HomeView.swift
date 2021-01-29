@@ -15,12 +15,12 @@ struct HomeView: View {
     private var closeDelay: Disposable? = nil
     
     @EnvironmentObject var navigator: Navigator
-    @State var commandOutput: Observable<String>? = nil
+    @State var showBar: Bool = false
     
-    private let bashRepository: BashRepository
+    private let getCurrentExecution: GetCurrentExecution
     
-    init(bashRepository: BashRepository = IoC.shared.resolveOrNil()!) {
-        self.bashRepository = bashRepository
+    init(getCurrentExecution: GetCurrentExecution = IoC.shared.resolveOrNil()!) {
+        self.getCurrentExecution = getCurrentExecution
     }
     
     var body: some View {
@@ -48,10 +48,10 @@ struct HomeView: View {
                 }
             }
             .padding(.all, 8)
-            if let output = commandOutput {
-                OutputBar(output: output, hide: {
+            if showBar {
+                OutputBar(hide: {
                     withAnimation {
-                        self.commandOutput = nil
+                        self.showBar = false
                     }
                 })
             }
@@ -59,23 +59,12 @@ struct HomeView: View {
         .background(Color.background)
         .frame(maxWidth: .infinity)
         .onAppear {
-            var closeDelay: Disposable? = nil
-            bashRepository.getCommandOutput().flatMap { command -> Observable<String> in
-                return command
-            }
-//                .subscribe(onNext: { output in
-//                closeDelay?.dispose()
-//                withAnimation {
-//                    self.commandOutput = output
-//                }
-//                if(output.state == .SUCCEEDED || output.state == .FAILED) {
-//                    closeDelay = Completable.empty().delay(.seconds(30), scheduler: MainScheduler.instance).subscribe(onCompleted:  {
-//                        withAnimation {
-//                            self.commandOutput = nil
-//                        }
-//                    })
-//                }
-//            })
+            getCurrentExecution.invoke().subscribe(onNext: { execution in
+                // TODO: Hide on success/fail after 30 secs
+                withAnimation {
+                    self.showBar = true
+                }
+            })
             .disposed(by: disposeBag)
         }
     }
