@@ -50,7 +50,7 @@ struct OutputView: View {
                     case .envError(_):
                         self.content = "Error setting up enviroment"
                     case .exit(let exitCode):
-                        self.content = "Terminated with exit code \(exitCode)"
+                        self.content += "Terminated with exit code \(exitCode)"
                     }
                 }
                 else {
