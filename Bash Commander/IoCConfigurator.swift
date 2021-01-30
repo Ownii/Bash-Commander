@@ -32,7 +32,6 @@ class IoCConfigurator {
         IoC.shared.registerLazySingleton(GetGroups.self) { GetGroupsImpl() }
         IoC.shared.registerLazySingleton(DeleteCommand.self) { DeleteCommandImpl() }
         IoC.shared.registerLazySingleton(EditCommand.self) { EditCommandImpl() }
-        IoC.shared.registerLazySingleton(NotifySuccess.self) { NotifySuccessImpl() }
         IoC.shared.registerLazySingleton(CancelRunningExecution.self) { CancelRunningExecutionImpl() }
         IoC.shared.registerLazySingleton(GetCurrentExecution.self) { GetCurrentExecutionImpl() }
         IoC.shared.registerLazySingleton(NotifyOnExecutionTermination.self) { NotifyOnExecutionTerminationImpl() }

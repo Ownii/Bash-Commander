@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A278FCA25B6D947007D9F51 /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A278FC925B6D947007D9F51 /* NotificationRepository.swift */; };
-		0A278FCF25B6DFBE007D9F51 /* NotifySuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A278FCE25B6DFBE007D9F51 /* NotifySuccess.swift */; };
 		0A2C093025A5C9BA00676695 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A2C093225A5C9BA00676695 /* Localizable.strings */; };
 		0A2CE3CF25C35E25006B187A /* CancelRunningExecution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2CE3CE25C35E25006B187A /* CancelRunningExecution.swift */; };
 		0A2CE3D425C36381006B187A /* GetCurrentExecution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2CE3D325C36381006B187A /* GetCurrentExecution.swift */; };
@@ -76,7 +75,6 @@
 
 /* Begin PBXFileReference section */
 		0A278FC925B6D947007D9F51 /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
-		0A278FCE25B6DFBE007D9F51 /* NotifySuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifySuccess.swift; sourceTree = "<group>"; };
 		0A2C093125A5C9BA00676695 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A2C093625A5C9ED00676695 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A2CE3CE25C35E25006B187A /* CancelRunningExecution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRunningExecution.swift; sourceTree = "<group>"; };
@@ -239,13 +237,13 @@
 		0A564260255C552C00607AA9 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0AAEDBC825C56BCD00700202 /* output */,
 				0AC7B63E255DA2110052DAF9 /* new */,
 				0AC7B63D255DA1EE0052DAF9 /* common */,
 				0AC7B63C255DA1E80052DAF9 /* home */,
 				0A56422A255C472B00607AA9 /* ContentView.swift */,
 				0A48032D255C6231004AE04D /* Colors.swift */,
 				0AC7B637255D977D0052DAF9 /* Navigator.swift */,
-				0A920C9525A4F81700B41641 /* OutputView.swift */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -264,20 +262,8 @@
 		0A56426F255C55D400607AA9 /* domain */ = {
 			isa = PBXGroup;
 			children = (
-				0A564278255C568600607AA9 /* ExecuteCommand.swift */,
-				0A3790D4255D346200403E5C /* GetCommands.swift */,
-				0A5A0D56255DA84700A19757 /* AddCommand.swift */,
-				0AA7CC9E255EDF1D005431DE /* GetGroups.swift */,
-				0A920C8B25A4EA4D00B41641 /* DeleteCommand.swift */,
-				0A920C9025A4EA9E00B41641 /* EditCommand.swift */,
-				0A7FBB6525A9F0D500193F3B /* IsNewVersionAvailable.swift */,
-				0A7FBB6A25A9F12500193F3B /* GetReleaseUrl.swift */,
-				0A7FBB7E25A9FB4400193F3B /* GetNewestRelease.swift */,
-				0A278FCE25B6DFBE007D9F51 /* NotifySuccess.swift */,
-				0A2CE3CE25C35E25006B187A /* CancelRunningExecution.swift */,
-				0A2CE3D325C36381006B187A /* GetCurrentExecution.swift */,
-				0A8F65DF25C368AF00240935 /* GetExecutionState.swift */,
-				0A8F65E425C36ACC00240935 /* NotifyOnExecutionTermination.swift */,
+				0AAEDBC725C56BA800700202 /* version */,
+				0AAEDBC325C56B6A00700202 /* commands */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -288,6 +274,57 @@
 				0A920C7325A4D3AE00B41641 /* ArrayExtensions.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		0AAEDBC325C56B6A00700202 /* commands */ = {
+			isa = PBXGroup;
+			children = (
+				0AAEDBCA25C56BF000700202 /* execute */,
+				0AAEDBC925C56BEA00700202 /* manage */,
+			);
+			path = commands;
+			sourceTree = "<group>";
+		};
+		0AAEDBC725C56BA800700202 /* version */ = {
+			isa = PBXGroup;
+			children = (
+				0A7FBB6525A9F0D500193F3B /* IsNewVersionAvailable.swift */,
+				0A7FBB6A25A9F12500193F3B /* GetReleaseUrl.swift */,
+				0A7FBB7E25A9FB4400193F3B /* GetNewestRelease.swift */,
+			);
+			path = version;
+			sourceTree = "<group>";
+		};
+		0AAEDBC825C56BCD00700202 /* output */ = {
+			isa = PBXGroup;
+			children = (
+				0A920C9525A4F81700B41641 /* OutputView.swift */,
+			);
+			path = output;
+			sourceTree = "<group>";
+		};
+		0AAEDBC925C56BEA00700202 /* manage */ = {
+			isa = PBXGroup;
+			children = (
+				0A3790D4255D346200403E5C /* GetCommands.swift */,
+				0A5A0D56255DA84700A19757 /* AddCommand.swift */,
+				0AA7CC9E255EDF1D005431DE /* GetGroups.swift */,
+				0A920C8B25A4EA4D00B41641 /* DeleteCommand.swift */,
+				0A920C9025A4EA9E00B41641 /* EditCommand.swift */,
+			);
+			path = manage;
+			sourceTree = "<group>";
+		};
+		0AAEDBCA25C56BF000700202 /* execute */ = {
+			isa = PBXGroup;
+			children = (
+				0A564278255C568600607AA9 /* ExecuteCommand.swift */,
+				0A2CE3CE25C35E25006B187A /* CancelRunningExecution.swift */,
+				0A2CE3D325C36381006B187A /* GetCurrentExecution.swift */,
+				0A8F65DF25C368AF00240935 /* GetExecutionState.swift */,
+				0A8F65E425C36ACC00240935 /* NotifyOnExecutionTermination.swift */,
+			);
+			path = execute;
 			sourceTree = "<group>";
 		};
 		0AC7B63C255DA1E80052DAF9 /* home */ = {
@@ -465,7 +502,6 @@
 				0A7FBB6125A9F09A00193F3B /* GitHubButton.swift in Sources */,
 				0A7FBB7F25A9FB4400193F3B /* GetNewestRelease.swift in Sources */,
 				0AC7B607255D54510052DAF9 /* MaterialButton.swift in Sources */,
-				0A278FCF25B6DFBE007D9F51 /* NotifySuccess.swift in Sources */,
 				0A920C9125A4EA9E00B41641 /* EditCommand.swift in Sources */,
 				0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */,
 				0AA7CC9F255EDF1D005431DE /* GetGroups.swift in Sources */,
