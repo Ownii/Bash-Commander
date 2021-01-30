@@ -25,7 +25,7 @@ class BashRepositoryImpl : BashRepository {
     
     
 
-    private let outputPublisher: BehaviorSubject<Observable<String>> = { BehaviorSubject<Observable<String>>(value: Observable.empty()) }()
+    private let outputPublisher: ReplaySubject<Observable<String>> = { ReplaySubject.create(bufferSize: 1) }()
     
     private var runningProcess: Process? = nil
     
