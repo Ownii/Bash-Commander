@@ -15,3 +15,4 @@
 "fail" = "Failed";
 "fail_subtitle" = "Executed command failed";
 "output" = "Output";
+"arguments" = "additional arguments";

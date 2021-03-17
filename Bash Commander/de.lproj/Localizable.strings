@@ -15,4 +15,4 @@
 "fail" = "Fehlgeschlagen";
 "fail_subtitle" = "Ausgeführter Befehl fehlgeschlagen";
 "output" = "Ausgabe";
-
+"arguments" = "zusätzliche Argumente";

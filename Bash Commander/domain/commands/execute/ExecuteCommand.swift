@@ -10,19 +10,25 @@ import Swift_IoC_Container
 import RxSwift
 
 protocol ExecuteCommand {
-    func invoke(_ command: Command)
+	func invoke(_ command: Command)
+	func invoke(_ command: Command, arguments: String)
 }
 
 class ExecuteCommandImpl : ExecuteCommand  {
-    
-    let bashRepository: BashRepository
-    
-    init(bashRepository: BashRepository = IoC.shared.resolveOrNil()!) {
-        self.bashRepository = bashRepository
-    }
-    
-    func invoke(_ command: Command) {
-       return bashRepository.execute(cmd: command.command!, workingDirectory: command.path!)
-    }
-    
+	
+	let bashRepository: BashRepository
+	
+	init(bashRepository: BashRepository = IoC.shared.resolveOrNil()!) {
+		self.bashRepository = bashRepository
+	}
+	
+	func invoke(_ command: Command) {
+		return bashRepository.execute(cmd: command.command!, workingDirectory: command.path!)
+	}
+	
+	func invoke(_ command: Command, arguments: String) {
+		let cmd = [command.command!, arguments].joined(separator: " ")
+		return bashRepository.execute(cmd: cmd, workingDirectory: command.path!)
+	}
+	
 }

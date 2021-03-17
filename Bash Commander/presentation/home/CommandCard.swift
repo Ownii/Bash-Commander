@@ -31,6 +31,12 @@ struct CommandCard: View {
             EditCommandView(window: window, cmd: command)
         }
     }
+	
+	func onExecuteWithArgs() {
+		navigator.open(width: 450, resizable: true) { window in
+			CommandArgumentsView(window: window, cmd: command)
+		}
+	}
     
     var body: some View {
         Group {
@@ -38,8 +44,9 @@ struct CommandCard: View {
                 Text(command.name!)
                     .fontWeight(.medium)
                 Spacer()
-                IconButton(name: "Edit", action: onMorePressed)
+                IconButton(name: "edit", action: onMorePressed)
                 IconButton(name: "execute", action: onExecuteCommand)
+				IconButton(name: "execute_plus", action: onExecuteWithArgs)
             }
             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 8)
             .background(Color.card)
