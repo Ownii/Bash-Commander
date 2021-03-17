@@ -130,6 +130,7 @@
 		0AC7B613255D55CE0052DAF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0AC7B637255D977D0052DAF9 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		21CF9ABC2619CB39007C1BE5 /* TooltipExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipExtension.swift; sourceTree = "<group>"; };
+		442D974E2602BD5600B876BA /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4447AD8E26027DD9005A3A68 /* CommandArgumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandArgumentsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -454,6 +455,7 @@
 				en,
 				Base,
 				de,
+				ru,
 			);
 			mainGroup = 0A56421C255C472B00607AA9;
 			packageReferences = (
@@ -585,6 +587,7 @@
 			children = (
 				0A2C093125A5C9BA00676695 /* en */,
 				0A2C093625A5C9ED00676695 /* de */,
+				442D974E2602BD5600B876BA /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
