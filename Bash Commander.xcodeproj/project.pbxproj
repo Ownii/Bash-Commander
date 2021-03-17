@@ -54,6 +54,7 @@
 		0AC7B60F255D55850052DAF9 /* EditCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B60E255D55850052DAF9 /* EditCommandView.swift */; };
 		0AC7B614255D55CE0052DAF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B613255D55CE0052DAF9 /* HomeView.swift */; };
 		0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B637255D977D0052DAF9 /* Navigator.swift */; };
+		4447AD8F26027DD9005A3A68 /* CommandArgumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447AD8E26027DD9005A3A68 /* CommandArgumentsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		0AC7B60E255D55850052DAF9 /* EditCommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommandView.swift; sourceTree = "<group>"; };
 		0AC7B613255D55CE0052DAF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0AC7B637255D977D0052DAF9 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		4447AD8E26027DD9005A3A68 /* CommandArgumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandArgumentsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC7B60E255D55850052DAF9 /* EditCommandView.swift */,
+				4447AD8E26027DD9005A3A68 /* CommandArgumentsView.swift */,
 			);
 			path = new;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				0A5A0D57255DA84700A19757 /* AddCommand.swift in Sources */,
 				0A3790E7255D470500403E5C /* CommandSection.swift in Sources */,
 				0A5A0D6B255DAF2000A19757 /* CommandsRepository.swift in Sources */,
+				4447AD8F26027DD9005A3A68 /* CommandArgumentsView.swift in Sources */,
 				0A920C8425A4D6CB00B41641 /* OutputBar.swift in Sources */,
 				0A48032E255C6231004AE04D /* Colors.swift in Sources */,
 				0A564293255C5DD700607AA9 /* Commands.swift in Sources */,
