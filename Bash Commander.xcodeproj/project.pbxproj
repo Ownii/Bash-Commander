@@ -54,6 +54,7 @@
 		0AC7B60F255D55850052DAF9 /* EditCommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B60E255D55850052DAF9 /* EditCommandView.swift */; };
 		0AC7B614255D55CE0052DAF9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B613255D55CE0052DAF9 /* HomeView.swift */; };
 		0AC7B638255D977D0052DAF9 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7B637255D977D0052DAF9 /* Navigator.swift */; };
+		21CF9ABD2619CB39007C1BE5 /* TooltipExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CF9ABC2619CB39007C1BE5 /* TooltipExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		0AC7B60E255D55850052DAF9 /* EditCommandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommandView.swift; sourceTree = "<group>"; };
 		0AC7B613255D55CE0052DAF9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0AC7B637255D977D0052DAF9 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		21CF9ABC2619CB39007C1BE5 /* TooltipExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				0A920C7325A4D3AE00B41641 /* ArrayExtensions.swift */,
+				21CF9ABC2619CB39007C1BE5 /* TooltipExtension.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				0A278FCA25B6D947007D9F51 /* NotificationRepository.swift in Sources */,
 				0A3790E2255D3EDF00403E5C /* IconButton.swift in Sources */,
 				0A920C9625A4F81700B41641 /* OutputView.swift in Sources */,
+				21CF9ABD2619CB39007C1BE5 /* TooltipExtension.swift in Sources */,
 				0A920C8C25A4EA4D00B41641 /* DeleteCommand.swift in Sources */,
 				0A7FBB7A25A9FA3200193F3B /* AppConfig.swift in Sources */,
 				0A564229255C472B00607AA9 /* AppDelegate.swift in Sources */,

@@ -100,6 +100,7 @@ struct EditCommandView: View {
                 HStack {
                     TextField("path", text: $path.animation()).disabled(true)
                         .textFieldStyle(MyTextStyle())
+                        .tooltip($path.wrappedValue)
                     IconButton(name: "more") {
                         let panel = NSOpenPanel()
                         panel.allowsMultipleSelection = false
