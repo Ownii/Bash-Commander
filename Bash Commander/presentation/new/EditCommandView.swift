@@ -95,8 +95,10 @@ struct EditCommandView: View {
             VStack(spacing: 16) {
                 TextField("name", text: $name.animation())
                     .textFieldStyle(MyTextStyle())
+                    .focusable()
                 TextField("command", text: $command.animation())
                     .textFieldStyle(MyTextStyle())
+                    .focusable()
                 HStack {
                     TextField("path", text: $path.animation()).disabled(true)
                         .textFieldStyle(MyTextStyle())
@@ -120,6 +122,7 @@ struct EditCommandView: View {
                 if( group == 0 ) {
                     TextField("groupname", text: $groupName.animation())
                         .textFieldStyle(MyTextStyle())
+                        .focusable()
                 }
             }
             

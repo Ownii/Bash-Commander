@@ -46,6 +46,7 @@ struct CommandArgumentsView: View {
                             get: { self.arguments[argument] ?? "" },
                             set: { self.arguments[argument] = $0}),
                           onCommit: onCommit).textFieldStyle(MyTextStyle())
+                    .focusable()
             }
             MaterialButton(text: "execute", enabled: isValid(), action: onCommit)
         }
