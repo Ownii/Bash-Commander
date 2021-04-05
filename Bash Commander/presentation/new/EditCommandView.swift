@@ -96,9 +96,17 @@ struct EditCommandView: View {
                 TextField("name", text: $name.animation())
                     .textFieldStyle(MyTextStyle())
                     .focusable()
-                TextField("command", text: $command.animation())
-                    .textFieldStyle(MyTextStyle())
-                    .focusable()
+                HStack {
+                    TextField("command", text: $command.animation())
+                        .textFieldStyle(MyTextStyle())
+                        .focusable()
+                    Image("error")
+                        .resizable()
+                        .renderingMode(.template)
+                        .colorMultiply(.icon)
+                        .frame(width: 18, height: 18)
+                        .tooltip(NSLocalizedString("arguments_description", comment: ""))
+                }
                 HStack {
                     TextField("path", text: $path.animation()).disabled(true)
                         .textFieldStyle(MyTextStyle())

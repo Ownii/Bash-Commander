@@ -17,3 +17,4 @@
 "output" = "Output";
 "arguments" = "additional arguments";
 "execute" = "Execute";
+"arguments_description" = "Use the syntax {some argument} to define placeholder for arguments that will be prompt at execution";

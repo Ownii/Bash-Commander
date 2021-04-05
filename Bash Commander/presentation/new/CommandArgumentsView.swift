@@ -44,7 +44,7 @@ struct CommandArgumentsView: View {
             ForEach(cmd.getArguments(), id: \.self) { argument in
                 TextField(argument, text: Binding<String>(
                             get: { self.arguments[argument] ?? "" },
-                            set: { self.arguments[argument] = $0}),
+                            set: { self.arguments[argument] = $0}).animation(),
                           onCommit: onCommit).textFieldStyle(MyTextStyle())
                     .focusable()
             }

@@ -17,3 +17,4 @@
 "output" = "Ausgabe";
 "arguments" = "zusätzliche Argumente";
 "execute" = "Ausführen";
+"arguments_description" = "Verwende die Syntax {some argument}, um Platzhalter für Argumente zu definieren, die bei der Ausführung abgefragt werden";
