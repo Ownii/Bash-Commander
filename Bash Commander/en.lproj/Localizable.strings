@@ -16,3 +16,4 @@
 "fail_subtitle" = "Executed command failed";
 "output" = "Output";
 "arguments" = "additional arguments";
+"execute" = "Execute";

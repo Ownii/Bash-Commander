@@ -11,43 +11,26 @@ import RxSwift
 
 struct CommandArgumentsView: View {
 	
-	private let disposeBag = DisposeBag()
-	
 	let window: NSWindow
 	let cmd: Command
 	private let executeCommand: ExecuteCommand
-	private let getCommands: GetCommands
 	
-	@State private var arguments: String = ""
-	@State private var cmdText: String?
-	
+    @State private var arguments: [String:String] = [:]
+    	
 	init(
 		window: NSWindow,
 		cmd: Command,
-		getCommands: GetCommands = IoC.shared.resolveOrNil()!,
 		executeCommand: ExecuteCommand = IoC.shared.resolveOrNil()!
 	) {
 		self.window = window
 		self.cmd = cmd
-		self.getCommands = getCommands
 		self.executeCommand = executeCommand
-		self.cmdText = cmd.command
 	}
 	
-	private func subscribeToGetCommands() {
-		getCommands.invoke().subscribe { commands in
-			guard let thisCmd = commands.element?.values
-					.flatMap({$0})
-					.first(where: {$0 == self.cmd })
-			else {
-				return window.close()
-			}
-			cmdText = thisCmd.command
-		}.disposed(by: disposeBag)
-	}
+
 	
 	private func onCommit() {
-		if arguments.isEmpty {return}
+		if !isValid() {return}
 		executeCommand.invoke(cmd, arguments: arguments)
 		close()
 	}
@@ -57,14 +40,24 @@ struct CommandArgumentsView: View {
 	}
 	
 	var body: some View {
-		HStack(spacing: 8) {
-			Text(cmdText ?? "")
-			TextField("arguments", text: $arguments.animation(), onCommit: onCommit).textFieldStyle(MyTextStyle())
-		}
+        VStack {
+            ForEach(cmd.getArguments(), id: \.self) { argument in
+                TextField(argument, text: Binding<String>(
+                            get: { self.arguments[argument] ?? "" },
+                            set: { self.arguments[argument] = $0}),
+                          onCommit: onCommit).textFieldStyle(MyTextStyle())
+            }
+            MaterialButton(text: "execute", enabled: isValid(), action: onCommit)
+        }
 		.padding(.all, 8)
 		.background(Color.background)
-		.onAppear(perform: subscribeToGetCommands)
 	}
+    
+    func isValid() -> Bool {
+        cmd.getArguments().allSatisfy { argument in
+            !(self.arguments[argument]?.isBlank() ?? true)
+        }
+    }
 	
 	
 }
