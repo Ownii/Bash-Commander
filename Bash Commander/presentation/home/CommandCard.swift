@@ -40,6 +40,7 @@ struct CommandCard: View {
                 Spacer()
                 IconButton(name: "Edit", action: onMorePressed)
                 IconButton(name: "execute", action: onExecuteCommand)
+                    .tooltip(command.command ?? "")
             }
             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 8)
             .background(Color.card)
