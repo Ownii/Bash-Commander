@@ -11,7 +11,7 @@ import RxSwift
 
 protocol ExecuteCommand {
 	func invoke(_ command: Command)
-	func invoke(_ command: Command, arguments: String)
+    func invoke(_ command: Command, arguments: [String:String])
 }
 
 class ExecuteCommandImpl : ExecuteCommand  {
@@ -26,9 +26,12 @@ class ExecuteCommandImpl : ExecuteCommand  {
 		return bashRepository.execute(cmd: command.command!, workingDirectory: command.path!)
 	}
 	
-	func invoke(_ command: Command, arguments: String) {
-		let cmd = [command.command!, arguments].joined(separator: " ")
-		return bashRepository.execute(cmd: cmd, workingDirectory: command.path!)
+	func invoke(_ command: Command, arguments: [String:String]) {
+        var cmd = command.command!
+        for (key, value) in arguments {
+            cmd = cmd.replacingOccurrences(of: "{\(key)}", with: value)
+        }
+        return bashRepository.execute(cmd: cmd, workingDirectory: command.path!)
 	}
 	
 }

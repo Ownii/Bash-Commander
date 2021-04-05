@@ -20,6 +20,21 @@ extension Command {
     @NSManaged public var name: String?
     @NSManaged public var path: String?
     @NSManaged public var group: String?
+    
+    public func getArguments() -> [String] {
+        guard let cmd = command else { return [] }
+        do {
+            let regex = try NSRegularExpression(pattern: "\\{(.*?)\\}")
+            let arguments = regex.matches(in: cmd, range: NSRange(cmd.startIndex..., in: cmd))
+            
+            return arguments.map {
+                String(cmd[Range($0.range(at: 1), in: cmd)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
 
 }
 

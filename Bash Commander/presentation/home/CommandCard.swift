@@ -23,7 +23,12 @@ struct CommandCard: View {
     }
     
     func onExecuteCommand() {
-        executeCommand.invoke(command)
+        if( command.getArguments().count > 0 ) {
+            onExecuteWithArgs()
+        }
+        else {
+            executeCommand.invoke(command)
+        }
     }
     
     func onMorePressed() {
@@ -33,7 +38,7 @@ struct CommandCard: View {
     }
 	
 	func onExecuteWithArgs() {
-		navigator.open(width: 450, resizable: true) { window in
+		navigator.open(resizable: true) { window in
 			CommandArgumentsView(window: window, cmd: command)
 		}
 	}
@@ -47,9 +52,9 @@ struct CommandCard: View {
                 IconButton(name: "edit", action: onMorePressed)
                 IconButton(name: "execute", action: onExecuteCommand)
                     .tooltip(command.command ?? "")
-				IconButton(name: "execute_plus", action: onExecuteWithArgs)
+//				IconButton(name: "execute_plus", action: onExecuteWithArgs)
             }
-            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 8)
+            .padding(.all, 8)
             .background(Color.card)
         }
         .cornerRadius(4)
