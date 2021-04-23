@@ -1,4 +1,2 @@
-- UI improvements
-- Live output
-- Output scroll force bottom
-- Form validation
+- Use parameters in your command to pass arguments at run time (eg: ls -la {Directory})
+- Hover-Popovers for play button and script path
