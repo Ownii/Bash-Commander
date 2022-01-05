@@ -30,6 +30,7 @@ struct OutputView: View {
     var body: some View {
         ReverseScrollView {
             Text(content.trimmingCharacters(in: .whitespacesAndNewlines))
+                .textSelectable() 
                 .frame(maxWidth: .infinity, alignment: .bottomLeading)
                 .padding(8)
         }

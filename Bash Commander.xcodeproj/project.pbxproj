@@ -28,6 +28,7 @@
 		0A564279255C568600607AA9 /* ExecuteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564278255C568600607AA9 /* ExecuteCommand.swift */; };
 		0A56428B255C5D7500607AA9 /* CommandCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56428A255C5D7500607AA9 /* CommandCard.swift */; };
 		0A564293255C5DD700607AA9 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A564292255C5DD700607AA9 /* Commands.swift */; };
+		0A584BB52786192500E32591 /* SelectableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A584BB42786192500E32591 /* SelectableText.swift */; };
 		0A5A0D57255DA84700A19757 /* AddCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A0D56255DA84700A19757 /* AddCommand.swift */; };
 		0A5A0D66255DAE3C00A19757 /* Commands.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A0D64255DAE3C00A19757 /* Commands.xcdatamodeld */; };
 		0A5A0D6B255DAF2000A19757 /* CommandsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5A0D6A255DAF2000A19757 /* CommandsRepository.swift */; };
@@ -104,9 +105,11 @@
 		0A564278255C568600607AA9 /* ExecuteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteCommand.swift; sourceTree = "<group>"; };
 		0A56428A255C5D7500607AA9 /* CommandCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCard.swift; sourceTree = "<group>"; };
 		0A564292255C5DD700607AA9 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
+		0A584BB42786192500E32591 /* SelectableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableText.swift; sourceTree = "<group>"; };
 		0A5A0D56255DA84700A19757 /* AddCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommand.swift; sourceTree = "<group>"; };
 		0A5A0D65255DAE3C00A19757 /* Commands.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Commands.xcdatamodel; sourceTree = "<group>"; };
 		0A5A0D6A255DAF2000A19757 /* CommandsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandsRepository.swift; sourceTree = "<group>"; };
+		0A6441B22633759700522C03 /* FTS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FTS.framework; path = ../FTS/sdk/build/bin/ios/releaseFramework/FTS.framework; sourceTree = "<group>"; };
 		0A7FBB6025A9F09A00193F3B /* GitHubButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubButton.swift; sourceTree = "<group>"; };
 		0A7FBB6525A9F0D500193F3B /* IsNewVersionAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsNewVersionAvailable.swift; sourceTree = "<group>"; };
 		0A7FBB6A25A9F12500193F3B /* GetReleaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReleaseUrl.swift; sourceTree = "<group>"; };
@@ -168,6 +171,7 @@
 				0A56423D255C472F00607AA9 /* Bash CommanderTests */,
 				0A564248255C472F00607AA9 /* Bash CommanderUITests */,
 				0A564226255C472B00607AA9 /* Products */,
+				0A6441B12633759600522C03 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -273,6 +277,14 @@
 			path = domain;
 			sourceTree = "<group>";
 		};
+		0A6441B12633759600522C03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A6441B22633759700522C03 /* FTS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0A920C7225A4D3A100B41641 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +364,7 @@
 				0AC7B606255D54510052DAF9 /* MaterialButton.swift */,
 				0A3790E1255D3EDF00403E5C /* IconButton.swift */,
 				0A876DA125AB6AE1006064A0 /* ReverseScrollView.swift */,
+				0A584BB42786192500E32591 /* SelectableText.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -540,6 +553,7 @@
 				0A2CE3D425C36381006B187A /* GetCurrentExecution.swift in Sources */,
 				0A876DA225AB6AE1006064A0 /* ReverseScrollView.swift in Sources */,
 				0AA7CC97255ED3C8005431DE /* Command+CoreDataProperties.swift in Sources */,
+				0A584BB52786192500E32591 /* SelectableText.swift in Sources */,
 				0A3790D5255D346200403E5C /* GetCommands.swift in Sources */,
 				0A8F65E025C368AF00240935 /* GetExecutionState.swift in Sources */,
 				0A2CE3CF25C35E25006B187A /* CancelRunningExecution.swift in Sources */,
@@ -733,6 +747,7 @@
 				DEVELOPMENT_TEAM = LKA83YJF42;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Bash Commander/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -761,6 +776,7 @@
 				DEVELOPMENT_TEAM = LKA83YJF42;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Bash Commander/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
