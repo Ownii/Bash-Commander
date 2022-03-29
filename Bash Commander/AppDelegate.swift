@@ -47,10 +47,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         self.statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
         
         if let button = self.statusBarItem.button {
-            button.image = NSImage(named: "StatusBarIcon")
+            button.image = StatusBarIcon.normal.image
             button.action = #selector(togglePopover(_:))
         }
         
+        
+    }
+    
+    func updateStatusBarIcon(_ icon: StatusBarIcon) {
+        print("trying to change statusBarItem")
+        
+        if( self.popover.isShown || icon != .normal ) {
+            self.statusBarItem?.button?.image = icon.image
+        }
+
     }
         
     @objc func togglePopover(_ sender: AnyObject?) {
@@ -62,6 +72,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
                 self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 self.popover.contentViewController?.view.window?.becomeKey()
                 NSApp.activate(ignoringOtherApps: true)
+                updateStatusBarIcon(.normal)
             }
         }
     }
@@ -79,4 +90,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         completionHandler()
     }
 
+}
+
+
+enum StatusBarIcon {
+    case normal
+    case running
+    case succeeded
+    case failed
+    
+    var image: NSImage? {
+        switch(self) {
+        case .normal:
+            return NSImage(named: "StatusBarIcon")
+        case .running:
+            return NSImage(named: "StatusBarIcon_Running")
+        case .succeeded:
+            return NSImage(named: "StatusBarIcon_Success")
+        case .failed:
+            return NSImage(named: "StatusBarIcon_Error")
+        }
+    }
 }

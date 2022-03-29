@@ -9,6 +9,7 @@ import SwiftUI
 import Swift_IoC_Container
 import RxSwift
 
+
 struct HomeView: View {
     
     private let disposeBag = DisposeBag()
@@ -52,6 +53,10 @@ struct HomeView: View {
                 OutputBar(hide: {
                     withAnimation {
                         self.showBar = false
+                        DispatchQueue.main.async {
+                            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                            appDelegate.updateStatusBarIcon(.normal)
+                        }
                     }
                 })
             }
@@ -64,6 +69,22 @@ struct HomeView: View {
                     withAnimation {
                         showBar = true
                     }
+                    
+                    var icon: StatusBarIcon
+                    switch(state) {
+                    case .SUCCEEDED:
+                        icon = StatusBarIcon.succeeded
+                    case .FAILED:
+                        icon = StatusBarIcon.failed
+                    case .RUNNING:
+                        icon = StatusBarIcon.running
+                    }
+                    
+                    DispatchQueue.main.async {
+                        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                        appDelegate.updateStatusBarIcon(icon)
+                    }
+                    
                     if( state == ExecutionState.RUNNING ) {
                         return Observable.just(false)
                     }
@@ -74,6 +95,10 @@ struct HomeView: View {
                 .debounce(.seconds(30), scheduler: MainScheduler.instance)
                 .subscribe(onNext: { hide in
                     if( hide ) {
+                        DispatchQueue.main.async {
+                            let appDelegate = NSApplication.shared.delegate as! AppDelegate
+                            appDelegate.updateStatusBarIcon(.normal)
+                        }
                         withAnimation {
                             self.showBar = false
                         }
