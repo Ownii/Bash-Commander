@@ -80,7 +80,7 @@ class BashRepositoryImpl : BashRepository {
         let paths = try! simpleExecute(command: command)
         let pathsOneliner = paths.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)
         envShell["PATH"] = "\(pathsOneliner):\(envPath)"
-
+        envShell["LC_ALL"] = "en_US.UTF-8"
         return envShell
     }
     
